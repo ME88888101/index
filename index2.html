@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>チッケム再生ガイド 簡易版</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #000000;
+    --card: #1c1c1e;
+    --border: #38383a;
+    --blue: #0a84ff;
+    --blue2: #409cff;
+    --sky: #64d2ff;
+    --white: #ffffff;
+    --label: #ebebf5;
+    --label2: rgba(235,235,245,0.6);
+    --muted: rgba(235,235,245,0.45);
+    --danger: #ff453a;
+    --green: #30d158;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--label);
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    width: 1200px;
+    height: 900px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* header */
+  .header { flex-shrink: 0; }
+  .header-bg {
+    background: linear-gradient(160deg, #000000 0%, #0a1a3a 40%, #0a3a6e 70%, #0a84ff 100%);
+    padding: 18px 40px 14px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .header-bg::before {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border: 2px solid rgba(10,132,255,0.2); transform: rotate(45deg);
+  }
+  .header-left { flex: 1; }
+  .tag { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 4px; color: var(--sky); border: 1px solid rgba(100,210,255,0.4); padding: 2px 10px; margin-bottom: 6px; }
+  .header h1 { font-size: 32px; font-weight: 900; letter-spacing: 2px; line-height: 1.1; color: var(--white); }
+  .header h1 .accent { background: linear-gradient(135deg, #64d2ff, #0a84ff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header-right {
+    font-size: 12px; color: rgba(100,210,255,0.7);
+    text-align: right; line-height: 1.7;
+  }
+  .header-right strong { color: var(--sky); font-size: 13px; display: block; }
+  .header-stripe { height: 3px; background: linear-gradient(90deg, #000, #0a84ff, #64d2ff, #0a84ff, #000); }
+
+  /* main grid */
+  .main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 16px 14px;
+    overflow: hidden;
+  }
+
+  /* phase cards */
+  .phase {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .phase-1 { border-left: 3px solid var(--blue); }
+  .phase-2 { border-left: 3px solid var(--danger); grid-row: 1 / 3; }
+  .phase-3 { border-left: 3px solid var(--sky); }
+  .phase-4 { border-left: 3px solid var(--green); }
+
+  .phase-header { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .phase-num { width: 40px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; flex-shrink: 0; }
+  .phase-1 .phase-num { background: rgba(10,132,255,0.15); color: var(--blue2); }
+  .phase-2 .phase-num { background: rgba(255,69,58,0.15); color: var(--danger); }
+  .phase-3 .phase-num { background: rgba(100,210,255,0.12); color: var(--sky); }
+  .phase-4 .phase-num { background: rgba(48,209,88,0.12); color: var(--green); }
+  .phase-title { font-size: 13px; font-weight: 700; padding: 0 10px; display: flex; align-items: center; }
+  .phase-timing { margin-left: auto; font-size: 9px; font-weight: 700; padding: 0 10px; border-left: 1px solid var(--border); display: flex; align-items: center; color: var(--muted); white-space: nowrap; }
+  .phase-body { padding: 10px 12px; flex: 1; overflow: hidden; }
+
+  .section-label { font-size: 8px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; margin-top: 10px; }
+  .section-label:first-child { margin-top: 0; }
+
+  .do-list, .ng-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .do-list li, .ng-list li { display: flex; align-items: flex-start; gap: 7px; font-size: 11.5px; line-height: 1.55; color: var(--label2); }
+  .do-list li strong, .ng-list li strong { color: var(--label); }
+  .do-list li::before { content: '✓'; font-weight: 900; font-size: 10px; color: var(--green); flex-shrink: 0; margin-top: 2px; }
+  .ng-list li::before { content: '✕'; font-weight: 900; font-size: 10px; color: var(--danger); flex-shrink: 0; margin-top: 2px; }
+
+  .num-list { list-style: none; display: flex; flex-direction: column; gap: 5px; counter-reset: num; }
+  .num-list li { display: flex; align-items: flex-start; gap: 7px; font-size: 11.5px; line-height: 1.55; color: var(--label2); counter-increment: num; }
+  .num-list li::before {
+    content: counter(num); font-weight: 900; font-size: 9px; color: var(--white);
+    background: var(--blue); width: 16px; height: 16px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+  .num-list li strong { color: var(--label); }
+
+  .priority-badge { display: inline-block; background: rgba(255,69,58,0.15); color: var(--danger); border: 1px solid rgba(255,69,58,0.35); font-size: 9px; font-weight: 700; letter-spacing: 1px; padding: 2px 10px; margin-bottom: 8px; border-radius: 20px; }
+
+  .divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+  .settings { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+  .setting-row { display: flex; align-items: center; justify-content: space-between; background: #242426; border: 1px solid var(--border); padding: 5px 10px; font-size: 11px; border-radius: 4px; }
+  .setting-key { color: var(--label2); }
+  .setting-val { font-weight: 700; font-size: 10px; padding: 1px 8px; border-radius: 20px; }
+  .val-on { background: rgba(48,209,88,0.15); color: var(--green); }
+  .val-off { background: rgba(255,69,58,0.15); color: var(--danger); }
+  .val-jp { background: rgba(10,132,255,0.15); color: var(--blue2); }
+  .val-std { background: rgba(235,235,245,0.07); color: var(--label2); }
+
+  .note { background: #2c2c2e; border-left: 2px solid #48484a; padding: 6px 10px; font-size: 10.5px; color: var(--muted); line-height: 1.7; margin-top: 7px; border-radius: 0 4px 4px 0; }
+  .note strong { color: var(--label2); }
+
+  .faq-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .faq-list li { background: #242426; border: 1px solid var(--border); padding: 5px 10px; font-size: 10.5px; color: var(--label2); line-height: 1.6; display: flex; gap: 6px; align-items: flex-start; border-radius: 6px; }
+  .faq-list li .q { color: var(--blue2); font-weight: 700; flex-shrink: 0; font-size: 10px; }
+  .faq-list li strong { color: var(--label); }
+  .faq-list li.ng strong { color: var(--danger); }
+
+  /* footer */
+  .footer { flex-shrink: 0; text-align: center; padding: 6px; font-size: 10px; color: var(--blue2); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-bg">
+      <div class="header-left">
+        <div class="tag">CHUANGJAY — SUMIN GUIDE</div>
+        <h1>チッケム<span class="accent">再生ガイド</span></h1>
+      </div>
+      <div class="header-right">
+        <strong>大原則</strong>
+        勝負は公開後<strong style="color:#fff;">24〜48時間</strong><br>
+        同じ人が10回より<strong style="color:#64d2ff;">10人が1回見る方が強い</strong>
+      </div>
+    </div>
+    <div class="header-stripe"></div>
+  </div>
+
+  <div class="main">
+
+    <!-- Phase 1 -->
+    <div class="phase phase-1">
+      <div class="phase-header">
+        <div class="phase-num">1</div>
+        <div class="phase-title">事前準備</div>
+        <div class="phase-timing">公開前</div>
+      </div>
+      <div class="phase-body">
+        <p class="section-label">やること</p>
+        <ul class="do-list">
+          <li>YouTubeの<strong>通知をON</strong></li>
+          <li>公開時間を<strong>事前にチェック・共有</strong></li>
+          <li>SNSでファンに<strong>周知</strong></li>
+        </ul>
+        <p class="section-label">YouTube設定</p>
+        <div class="settings">
+          <div class="setting-row"><span class="setting-key">国 / 地域</span><span class="setting-val val-jp">日本</span></div>
+          <div class="setting-row"><span class="setting-key">自動再生</span><span class="setting-val val-off">オフ</span></div>
+          <div class="setting-row"><span class="setting-key">統計情報</span><span class="setting-val val-on">オン</span></div>
+          <div class="setting-row"><span class="setting-key">再生画質</span><span class="setting-val val-std">720p以上</span></div>
+          <div class="setting-row"><span class="setting-key">再生速度</span><span class="setting-val val-std">標準（1.0x）</span></div>
+        </div>
+        <div class="note"><strong>セカイプロデューサーも「日本」推奨。</strong>VPN接続はNG。</div>
+      </div>
+    </div>
+
+    <!-- Phase 2 (tall) -->
+    <div class="phase phase-2">
+      <div class="phase-header">
+        <div class="phase-num">2</div>
+        <div class="phase-title">公開直後</div>
+        <div class="phase-timing">0〜2時間 ★最重要</div>
+      </div>
+      <div class="phase-body">
+        <div class="priority-badge">⚡ ここが最重要フェーズ</div>
+        <p class="section-label">必ずやること</p>
+        <ol class="num-list">
+          <li>通知から<strong>すぐクリック</strong>してそのまま視聴</li>
+          <li>最初から最後まで<strong>フル視聴</strong>（冒頭30秒特に重要）</li>
+          <li><strong>文章でコメント</strong>を書く</li>
+          <li><strong>高評価</strong>を押す</li>
+        </ol>
+        <div class="divider"></div>
+        <p class="section-label">NG</p>
+        <ul class="ng-list">
+          <li>ミュート放置 / 途中停止・離脱</li>
+          <li>同アカウントで連続再生・複数端末同時再生</li>
+          <li>バックグラウンド / 分割画面 / 早送り</li>
+          <li>絵文字のみのコメント</li>
+        </ul>
+        <div class="divider"></div>
+        <p class="section-label">よくある質問</p>
+        <ul class="faq-list">
+          <li><span class="q">Q</span><span>広告は？　→　<strong>スキップOK</strong>。広告ブロッカーはNG</span></li>
+          <li><span class="q">Q</span><span>また見たい　→　<strong>別の動画を3〜4本挟んで10分以上空けてから</strong></span></li>
+          <li class="ng"><span class="q">Q</span><span>プレミアムなら何回でもOK？　→　<strong>誤情報</strong></span></li>
+          <li class="ng"><span class="q">Q</span><span>24時間以内なら何回でもOK？　→　<strong>誤情報</strong></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase phase-3">
+      <div class="phase-header">
+        <div class="phase-num">3</div>
+        <div class="phase-title">拡散</div>
+        <div class="phase-timing">2〜48時間</div>
+      </div>
+      <div class="phase-body">
+        <p class="section-label">やること</p>
+        <ul class="do-list">
+          <li>X・TikTokで<strong>切り抜き・クリップを拡散</strong></li>
+          <li>投稿に<strong>YouTubeのURLを貼る</strong></li>
+          <li>「見てください」より<strong>「この瞬間がすごい」と見せる</strong></li>
+          <li><strong>ファン以外</strong>にも届くよう発信する</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase phase-4">
+      <div class="phase-header">
+        <div class="phase-num">4</div>
+        <div class="phase-title">再生リスト</div>
+        <div class="phase-timing">初速以外で有効</div>
+      </div>
+      <div class="phase-body">
+        <p class="section-label">有効な使い方</p>
+        <ul class="do-list">
+          <li>初速後の<strong>ながら再生・繰り返し視聴</strong>に活用</li>
+          <li>視聴セッションを<strong>延ばす</strong>効果あり</li>
+        </ul>
+        <div class="divider"></div>
+        <p class="section-label">向かない使い方</p>
+        <ul class="ng-list">
+          <li>公開直後の<strong>初速ブーストには効果薄</strong></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">PRINCE JAYを全力応援しよう 💙</div>
+
+</body>
+</html>
