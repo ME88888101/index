@@ -217,6 +217,14 @@
     padding: 4px 14px; margin-bottom: 14px; border-radius: 20px;
   }
 
+  /* ===== 2-COLUMN LAYOUT ===== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 18px;
+  }
+  .col-divider { background: var(--border); }
+
   /* ===== FAQ ===== */
   .faq-list {
     list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px;
@@ -249,7 +257,6 @@
       <div class="triangle-deco"></div>
       <div class="tag">CHUANGJAY — SUMIN GUIDE</div>
       <h1>チッケム<span class="accent">再生ガイド</span></h1>
-      <p class="sub">国プ・セカプ向け　HOW TO</p>
     </div>
     <div class="header-stripe"></div>
   </div>
@@ -266,20 +273,32 @@
       <div class="phase-timing">公開前</div>
     </div>
     <div class="phase-body">
-      <p class="section-label">やること</p>
-      <ul class="do-list">
-        <li>YouTubeの<strong>通知をON</strong>にする</li>
-        <li>公開時間を<strong>事前にチェック・共有</strong>する</li>
-      </ul>
-      <p class="section-label">YouTube設定</p>
-      <div class="yt-settings">
-        <div class="setting-row"><span class="setting-key">国 / 地域</span><span class="setting-val val-jp">日本</span></div>
-        <div class="setting-row"><span class="setting-key">自動再生</span><span class="setting-val val-off">オフ</span></div>
-        <div class="setting-row"><span class="setting-key">統計情報を有効にする</span><span class="setting-val val-on">オン</span></div>
-        <div class="setting-row"><span class="setting-key">再生画質</span><span class="setting-val val-std">720p 以上</span></div>
-        <div class="setting-row"><span class="setting-key">再生スピード</span><span class="setting-val val-std">標準（1.0x）</span></div>
+      <div class="two-col">
+        <!-- 左：やること -->
+        <div>
+          <p class="section-label">やること</p>
+          <ul class="do-list">
+            <li>YouTubeの<strong>通知をON</strong>にする</li>
+            <li>公開時間を<strong>事前にチェック・共有</strong>する</li>
+          </ul>
+          <p class="section-label">NG</p>
+          <ul class="ng-list">
+            <li>VPN接続</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <!-- 右：設定 -->
+        <div>
+          <p class="section-label">YouTube設定</p>
+          <div class="yt-settings">
+            <div class="setting-row"><span class="setting-key">国 / 地域</span><span class="setting-val val-jp">日本</span></div>
+            <div class="setting-row"><span class="setting-key">自動再生</span><span class="setting-val val-off">オフ</span></div>
+            <div class="setting-row"><span class="setting-key">統計情報</span><span class="setting-val val-on">オン</span></div>
+            <div class="setting-row"><span class="setting-key">再生画質</span><span class="setting-val val-std">720p以上</span></div>
+            <div class="setting-row"><span class="setting-key">再生速度</span><span class="setting-val val-std">標準（1.0x）</span></div>
+          </div>
+        </div>
       </div>
-      <div class="note">VPN接続はNG。</div>
     </div>
   </div>
 
@@ -292,21 +311,29 @@
     </div>
     <div class="phase-body">
       <div class="priority-badge">⚡ ここが最重要フェーズ</div>
-      <p class="section-label">必ずやること</p>
-      <ul class="do-list">
-        <li>通知から<strong>すぐクリック</strong>してそのまま視聴</li>
-        <li>最初から最後まで<strong>フル視聴</strong>（冒頭30秒が特に重要）</li>
-        <li><strong>文章でコメント</strong>を書く</li>
-        <li><strong>高評価</strong>を押す</li>
-      </ul>
-      <div class="divider"></div>
-      <p class="section-label">NG</p>
-      <ul class="ng-list">
-        <li>ミュート放置 / 途中停止・離脱</li>
-        <li>同アカウントで連続再生・複数端末同時再生</li>
-        <li>バックグラウンド / 分割画面 / 早送り</li>
-        <li>絵文字のみのコメント</li>
-      </ul>
+      <div class="two-col">
+        <!-- 左：必ずやること -->
+        <div>
+          <p class="section-label">必ずやること</p>
+          <ul class="do-list">
+            <li>通知から<strong>すぐクリック</strong>してそのまま視聴</li>
+            <li>最初から最後まで<strong>フル視聴</strong>（冒頭30秒が特に重要）</li>
+            <li><strong>文章でコメント</strong>を書く</li>
+            <li><strong>高評価</strong>を押す</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <!-- 右：NG -->
+        <div>
+          <p class="section-label">NG</p>
+          <ul class="ng-list">
+            <li>ミュート放置 / 途中停止・離脱</li>
+            <li>同アカウントで連続再生・複数端末同時再生</li>
+            <li>バックグラウンド / 分割画面 / 早送り</li>
+            <li>絵文字のみのコメント</li>
+          </ul>
+        </div>
+      </div>
       <div class="divider"></div>
       <p class="section-label">よくある質問</p>
       <ul class="faq-list">
