@@ -1,112 +1,634 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>TikTok Support Guide</title>
+<title>직캠 재생 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
   html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: #000000; --card: #1c1c1e; --border: #38383a;
-    --blue: #0a84ff; --blue2: #409cff; --sky: #64d2ff;
-    --white: #ffffff; --label: #ebebf5; --label2: rgba(235,235,245,0.6);
-    --muted: rgba(235,235,245,0.45); --danger: #ff453a;
-    --green: #30d158; --pink: #ff375f; --tiktok: #69c9d0;
-  }
-  body { background: var(--bg); color: var(--label); font-family: -apple-system, 'Helvetica Neue', sans-serif; min-height: 100vh; padding: 40px 20px 60px; }
-  .wrapper { max-width: 680px; margin: 0 auto; }
-  .header { text-align: center; margin-bottom: 24px; overflow: hidden; border-radius: 4px; }
-  .header-bg { background: linear-gradient(160deg, #000000 0%, #1a0a2e 40%, #2e0a3a 70%, #ff375f 100%); padding: 28px 32px 24px; position: relative; overflow: hidden; }
-  .header-bg::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border: 2px solid rgba(105,201,208,0.2); transform: rotate(45deg); }
-  .header-bg::after { content: ''; position: absolute; bottom: -30px; left: -30px; width: 130px; height: 130px; border: 2px solid rgba(255,55,95,0.15); transform: rotate(45deg); }
-  .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; color: var(--tiktok); border: 1px solid rgba(105,201,208,0.4); padding: 4px 16px; margin-bottom: 14px; }
-  .header h1 { font-size: 26px; font-weight: 900; letter-spacing: 0px; line-height: 1.3; margin-bottom: 10px; color: var(--white); }
-  .header h1 .accent { background: linear-gradient(135deg, #69c9d0, #ff375f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .header-stripe { height: 4px; background: linear-gradient(90deg, #000, #ff375f, #69c9d0, #ff375f, #000); }
-  .lead { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--pink); padding: 16px 20px; margin-bottom: 20px; font-size: 13px; line-height: 1.9; color: var(--label2); border-radius: 12px; }
-  .lead strong { color: var(--label); }
-  .action-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
-  .action-header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
-  .action-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; flex-shrink: 0; }
-  .action-title { font-size: 17px; font-weight: 700; color: var(--label); }
-  .action-emoji { margin-left: auto; font-size: 22px; }
-  .action-body { padding: 14px 20px; font-size: 13px; line-height: 1.8; color: var(--label2); }
-  .action-body strong { color: var(--label); }
-  .action-1 { border-left: 3px solid var(--tiktok); }
-  .action-1 .action-num { background: rgba(105,201,208,0.15); color: var(--tiktok); }
-  .action-2 { border-left: 3px solid var(--pink); }
-  .action-2 .action-num { background: rgba(255,55,95,0.15); color: var(--pink); }
-  .action-3 { border-left: 3px solid var(--green); }
-  .action-3 .action-num { background: rgba(48,209,88,0.15); color: var(--green); }
-  .action-4 { border-left: 3px solid var(--blue2); }
-  .action-4 .action-num { background: rgba(64,156,255,0.15); color: var(--blue2); }
-  .action-5 { border-left: 3px solid #ffd60a; }
-  .action-5 .action-num { background: rgba(255,214,10,0.15); color: #ffd60a; }
-  .big-point { text-align: center; padding: 20px; font-size: 16px; font-weight: 900; color: #1a1a1a; border: 1px solid rgba(255,55,95,0.35); background: linear-gradient(135deg, rgba(105,201,208,0.12), rgba(255,55,95,0.12)); border-radius: 12px; margin-bottom: 20px; line-height: 1.7; }
-  .big-point .sub { font-size: 13px; font-weight: 700; color: #555; display: block; margin-bottom: 4px; }
-  .footer-note { text-align: center; font-size: 11px; color: #888; margin-top: 28px; line-height: 1.8; }
+
+:root {
+–bg: #000000;
+–card: #1c1c1e;
+–card2: #2c2c2e;
+–border: #38383a;
+–blue: #0a84ff;
+–blue2: #409cff;
+–sky: #64d2ff;
+–crystal: #a8d4ff;
+–white: #ffffff;
+–label: #ebebf5;
+–label2: rgba(235,235,245,0.6);
+–light: #2c2c2e;
+–muted: rgba(235,235,245,0.45);
+–danger: #ff453a;
+–green: #30d158;
+}
+
+body {
+background: var(–bg);
+color: var(–label);
+font-family: ‘Apple SD Gothic Neo’, ‘Noto Sans KR’, sans-serif;
+min-height: 100vh;
+padding: 40px 20px 60px;
+}
+
+.wrapper {
+max-width: 860px;
+margin: 0 auto;
+}
+
+/* ===== HEADER ===== */
+.header {
+text-align: center;
+margin-bottom: 28px;
+padding: 0;
+position: relative;
+overflow: hidden;
+border-radius: 4px;
+}
+.header-bg {
+background: linear-gradient(160deg, #000000 0%, #0a1a3a 40%, #0a3a6e 70%, #0a84ff 100%);
+padding: 44px 32px 36px;
+position: relative;
+overflow: hidden;
+}
+/* geometric decorations */
+.header-bg::before {
+content: ‘’;
+position: absolute;
+top: -40px; right: -40px;
+width: 180px; height: 180px;
+border: 2px solid rgba(10,132,255,0.2);
+transform: rotate(45deg);
+}
+.header-bg::after {
+content: ‘’;
+position: absolute;
+bottom: -30px; left: -30px;
+width: 130px; height: 130px;
+border: 2px solid rgba(10,132,255,0.15);
+transform: rotate(45deg);
+}
+.triangle-deco {
+position: absolute;
+top: 16px; left: 50%;
+transform: translateX(-50%);
+width: 0; height: 0;
+border-left: 30px solid transparent;
+border-right: 30px solid transparent;
+border-bottom: 26px solid rgba(10,132,255,0.15);
+}
+.tag {
+display: inline-block;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–sky);
+border: 1px solid rgba(100,210,255,0.4);
+padding: 4px 16px;
+margin-bottom: 16px;
+position: relative;
+}
+.header h1 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 54px;
+letter-spacing: 5px;
+line-height: 1.1;
+margin-bottom: 10px;
+color: var(–white);
+position: relative;
+}
+.header h1 .accent {
+background: linear-gradient(135deg, #64d2ff, #0a84ff, #ffffff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.header .sub {
+font-size: 12px;
+color: rgba(100,210,255,0.8);
+line-height: 1.9;
+letter-spacing: 0.5px;
+position: relative;
+}
+/* bottom stripe */
+.header-stripe {
+height: 4px;
+background: linear-gradient(90deg, #000, #0a84ff, #64d2ff, #0a84ff, #000);
+}
+
+/* ===== INSIGHT ===== */
+.insight {
+background: var(–card);
+border: 1px solid var(–border);
+border-left: 3px solid var(–blue);
+padding: 18px 22px;
+margin-bottom: 24px;
+font-size: 13px;
+line-height: 1.9;
+color: var(–label2);
+border-radius: 12px;
+}
+.insight strong { color: var(–blue2); font-weight: 700; }
+.insight .headline {
+display: block;
+font-size: 14px;
+font-weight: 900;
+color: var(–label);
+margin-bottom: 6px;
+}
+
+/* ===== PHASE ===== */
+.phase {
+background: var(–card);
+border: 1px solid var(–border);
+margin-bottom: 16px;
+overflow: hidden;
+border-radius: 12px;
+}
+.phase-header {
+display: flex;
+align-items: stretch;
+border-bottom: 1px solid var(–border);
+}
+.phase-num {
+width: 56px;
+min-height: 54px;
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px;
+flex-shrink: 0;
+color: var(–white);
+}
+.phase-title {
+font-size: 15px;
+font-weight: 700;
+padding: 0 16px;
+display: flex;
+align-items: center;
+color: var(–label);
+}
+.phase-timing {
+margin-left: auto;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.5px;
+padding: 0 14px;
+border-left: 1px solid var(–border);
+display: flex;
+align-items: center;
+color: var(–muted);
+white-space: nowrap;
+}
+.phase-body {
+padding: 20px 22px;
+}
+
+/* Phase color themes */
+.phase-1 .phase-num { background: rgba(10,132,255,0.2); color: var(–blue2); }
+.phase-1 { border-left: 3px solid var(–blue); }
+
+.phase-2 .phase-num { background: rgba(10,132,255,0.12); color: var(–sky); }
+.phase-2 { border-left: 3px solid var(–sky); }
+
+.phase-3 .phase-num { background: rgba(100,210,255,0.1); color: var(–sky); }
+.phase-3 { border-left: 3px solid #3a3a3c; }
+
+.phase-4 .phase-num { background: rgba(48,209,88,0.1); color: var(–green); }
+.phase-4 { border-left: 3px solid var(–green); }
+
+/* ===== LISTS ===== */
+.do-list, .ng-list {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 7px;
+margin-bottom: 14px;
+}
+.do-list li, .ng-list li {
+display: flex;
+align-items: flex-start;
+gap: 10px;
+font-size: 14px;
+line-height: 1.7;
+color: var(–label2);
+}
+.do-list li strong, .ng-list li strong { color: var(–label); }
+.do-list li::before {
+content: ‘✓’;
+font-weight: 900;
+font-size: 12px;
+color: var(–green);
+flex-shrink: 0;
+margin-top: 3px;
+}
+.ng-list li::before {
+content: ‘✕’;
+font-weight: 900;
+font-size: 12px;
+color: var(–danger);
+flex-shrink: 0;
+margin-top: 3px;
+}
+
+.section-label {
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 10px;
+margin-top: 16px;
+}
+.section-label:first-child { margin-top: 0; }
+
+.note {
+background: #2c2c2e;
+border-left: 2px solid #48484a;
+padding: 10px 14px;
+font-size: 10.5px;
+color: var(–muted);
+line-height: 1.8;
+margin-top: 12px;
+border-radius: 0 6px 6px 0;
+}
+.note strong { color: var(–label2); }
+
+.note-important {
+background: rgba(10,132,255,0.08);
+border: 1px solid rgba(10,132,255,0.3);
+border-left: 3px solid var(–blue);
+padding: 12px 16px;
+font-size: 12.5px;
+color: var(–label2);
+line-height: 1.8;
+margin-top: 12px;
+border-radius: 0 8px 8px 0;
+}
+.note-important strong { color: var(–blue2); }
+
+/* ===== SETTINGS TABLE ===== */
+.yt-settings {
+border: 1px solid var(–border);
+margin-bottom: 12px;
+overflow: hidden;
+border-radius: 10px;
+}
+.setting-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 9px 14px;
+border-bottom: 1px solid var(–border);
+font-size: 13px;
+background: var(–card);
+}
+.setting-row:nth-child(even) { background: #242426; }
+.setting-row:last-child { border-bottom: none; }
+.setting-key { color: var(–label2); }
+.setting-val {
+font-weight: 700;
+font-size: 11px;
+letter-spacing: 1px;
+padding: 2px 12px;
+border-radius: 20px;
+}
+.val-on { background: rgba(48,209,88,0.15); color: var(–green); }
+.val-off { background: rgba(255,69,58,0.15); color: var(–danger); }
+.val-jp { background: rgba(10,132,255,0.15); color: var(–blue2); }
+.val-std { background: rgba(235,235,245,0.08); color: var(–label2); }
+
+/* ===== PRIORITY BADGE ===== */
+.priority-badge {
+display: block;
+background: rgba(255,69,58,0.15);
+color: var(–danger);
+border: 1px solid rgba(255,69,58,0.45);
+font-size: 14px;
+font-weight: 700;
+letter-spacing: 2px;
+padding: 10px 18px;
+margin-bottom: 16px;
+border-radius: 8px;
+text-align: center;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+height: 1px;
+background: var(–border);
+margin: 14px 0;
+}
+
+/* ===== SUMMARY ===== */
+.summary {
+background: var(–card);
+border: 1px solid var(–border);
+border-top: 3px solid var(–blue);
+border-radius: 12px;
+padding: 28px;
+margin-top: 8px;
+position: relative;
+overflow: hidden;
+}
+.summary::before {
+content: ‘’;
+position: absolute;
+top: -50px; right: -50px;
+width: 160px; height: 160px;
+border: 2px solid rgba(10,132,255,0.08);
+transform: rotate(45deg);
+}
+.summary h3 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 22px;
+letter-spacing: 5px;
+color: var(–blue2);
+margin-bottom: 18px;
+text-align: center;
+position: relative;
+}
+.summary-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+margin-bottom: 16px;
+}
+.summary-list {
+display: flex;
+flex-direction: column;
+gap: 8px;
+margin-bottom: 16px;
+}
+.summary-row {
+display: flex;
+align-items: center;
+gap: 10px;
+background: #2c2c2e;
+border: 1px solid var(–border);
+padding: 10px 14px;
+border-radius: 8px;
+white-space: nowrap;
+}
+.s-label {
+font-size: 10px;
+color: var(–muted);
+letter-spacing: 2px;
+text-transform: uppercase;
+white-space: nowrap;
+flex-shrink: 0;
+min-width: 80px;
+}
+.s-val { font-weight: 700; color: var(–label); font-size: 13px; }
+
+.big-point {
+text-align: center;
+padding: 18px;
+font-size: 24px;
+font-weight: 700;
+color: var(–label);
+border: 1px solid rgba(10,132,255,0.25);
+background: rgba(10,132,255,0.08);
+line-height: 1.8;
+border-radius: 10px;
+position: relative;
+white-space: nowrap;
+}
+.big-point span {
+background: linear-gradient(135deg, #64d2ff, #0a84ff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+/* ===== TWO-COLUMN LAYOUT ===== */
+.two-col {
+display: flex;
+flex-direction: row;
+gap: 0;
+align-items: flex-start;
+}
+.two-col > div:not(.col-divider) { flex: 1; }
+.two-col > div:not(.col-divider):first-child { flex: 1.4; }
+.col-divider { width: 1px; background: var(–border); align-self: stretch; margin: 0 18px; flex-shrink: 0; }
+.two-col .do-list li, .two-col .ng-list li { white-space: nowrap; }
+
+/* ===== FOOTER ===== */
+.footer-note {
+text-align: center;
+font-size: 11px;
+color: #409cff;
+margin-top: 28px;
+line-height: 1.8;
+}
 </style>
+
 </head>
 <body>
 <div class="wrapper">
+
+  <!-- Header -->
+
   <div class="header">
     <div class="header-bg">
-      <div class="tag">CHUANGJAY — TikTok GUIDE</div>
-      <h1><span class="accent">Support Jay right now!</span> TikTok Guide</h1>
+      <div class="triangle-deco"></div>
+      <div class="tag">CHUANGJAY — SUMIN GUIDE</div>
+      <h1>직캠<br><span class="accent">재생 가이드</span></h1>
+      <p class="sub">새 직캠 공개 시, 재생 수를 최대화하기 위한<br>국가 프로듀서・세계 프로듀서를 위한 완전 매뉴얼</p>
     </div>
     <div class="header-stripe"></div>
   </div>
-  <div class="lead">
-    Making fan videos is a high bar… but！<br>
-    Whenever you see a video of Jay, <strong>watch, engage, and share</strong> — that's all it takes to support him.
+
+  <!-- Key insight -->
+
+  <div class="insight">
+    <span class="headline">먼저 알아야 할 기본 원칙</span>
+    <strong>승부는 공개 후 24〜48시간.</strong> YouTube는 공개 직후 「이 영상을 퍼뜨릴지」를 판단합니다.<br>
+    같은 사람이 10번 보는 것보다, <strong>10명이 1번씩 보는 게 더 강하다.</strong><br>
+    목표는 「다른 사람이 클릭하고 싶어지는 상태를 만드는 것」.
   </div>
-  <div class="action-card action-1">
-    <div class="action-header">
-      <div class="action-num">1</div>
-      <div class="action-title">Watch to the end</div>
-      <div class="action-emoji">▶️</div>
+
+  <!-- Phase 1 -->
+
+  <div class="phase phase-1">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <div class="phase-title">사전 준비</div>
+      <div class="phase-timing">공개 전</div>
     </div>
-    <div class="action-body"><strong>The most important action.</strong> The higher the watch-through rate, the more people the video gets recommended to. <strong>Rewatching</strong> makes it even more effective!</div>
-  </div>
-  <div class="action-card action-2">
-    <div class="action-header">
-      <div class="action-num">2</div>
-      <div class="action-title">Like</div>
-      <div class="action-emoji">❤️</div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <p class="section-label">할 일</p>
+          <ul class="do-list">
+            <li>YouTube에 <strong>로그인</strong>하기</li>
+            <li>일프 공식 채널 <strong>알림 ON</strong> 설정</li>
+            <li>공개 시간을 미리 확인・공유하기</li>
+            <li>SNS에서 주변 팬에게 알리기</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <div>
+          <p class="section-label">YouTube 설정 확인</p>
+          <div class="yt-settings">
+            <div class="setting-row"><span class="setting-key">국가 / 지역</span><span class="setting-val val-jp">일본</span></div>
+            <div class="setting-row"><span class="setting-key">자동 재생</span><span class="setting-val val-off">끄기</span></div>
+            <div class="setting-row"><span class="setting-key">통계 정보 활성화</span><span class="setting-val val-on">켜기</span></div>
+            <div class="setting-row"><span class="setting-key">화질</span><span class="setting-val val-std">720p 이상</span></div>
+            <div class="setting-row"><span class="setting-key">재생 속도</span><span class="setting-val val-std">기본（1.0x）</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="note">공식 앱 또는 공식 사이트에서 설정을 확인하세요. <strong>세계 프로듀서도 「일본」으로 설정 권장</strong>（일본 YouTube에서 재생 수가 카운트되도록）. <strong>VPN 사용은 NG.</strong></div>
     </div>
-    <div class="action-body">The most basic action. Make it a habit to <strong>always like</strong> after watching!</div>
   </div>
-  <div class="action-card action-3">
-    <div class="action-header">
-      <div class="action-num">3</div>
-      <div class="action-title">Comment</div>
-      <div class="action-emoji">💬</div>
+
+  <!-- Phase 2 -->
+
+  <div class="phase phase-2">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <div class="phase-title">공개 직후</div>
+      <div class="phase-timing">0〜2시간 ★최중요</div>
     </div>
-    <div class="action-body">An action with <strong>more weight than a like</strong>. <strong>Even just an emoji is OK！</strong></div>
-  </div>
-  <div class="action-card action-4">
-    <div class="action-header">
-      <div class="action-num">4</div>
-      <div class="action-title">Save</div>
-      <div class="action-emoji">🔖</div>
+    <div class="phase-body">
+      <div class="priority-badge">⚡ 가장 중요한 단계</div>
+      <div class="two-col">
+        <div>
+          <p class="section-label">必ず할 일（順番通りに）</p>
+          <ul class="do-list">
+            <li>알림이 오면 <strong>즉시 클릭</strong>（이탈하지 말고 바로 시청）</li>
+            <li>처음부터 끝까지 <strong>풀 시청 1회</strong></li>
+            <li>시작 부분에서 이탈하지 않기（<strong>처음 30초가 특히 중요</strong>）</li>
+            <li><strong>문장으로 댓글 달기</strong>（구체적인 감상이 좋음）</li>
+            <li><strong>좋아요 누르기</strong></li>
+          </ul>
+          <div class="note-important">알림을 클릭하면 <strong>CTR（클릭률）이 직접 카운트</strong>되어 YouTube 알고리즘에 긍정적 영향을 줍니다. 놓쳤다면 <strong>직접 검색해서</strong> 재생해 주세요.</div>
+        </div>
+        <div class="col-divider"></div>
+        <div>
+          <p class="section-label">NG — 해서는 안 되는 것</p>
+          <ul class="ng-list">
+            <li>음소거 방치</li>
+            <li>중도 정지・이탈</li>
+            <li>같은 계정으로 연속 재생 반복</li>
+            <li>동일 계정으로 동시 재생</li>
+            <li>백그라운드 재생・분할 화면 재생</li>
+            <li>빨리감기・일시정지 반복</li>
+            <li>이모티콘만 있는 댓글 연속 작성</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note-important">YouTubeは공개 직후に「<strong>CTR（クリック率）× 시청 유지율</strong>」を計測して、広めるかを判断します。ここが高いと次の段階へ拡大されます。</div>
+      <div class="divider"></div>
+      <p class="section-label">자주 묻는 질문</p>
+      <ul class="do-list">
+        <li><strong>광고는 스킵해도 OK</strong>（재생 횟수에 영향 없음）</li>
+        <li>단, <strong>광고 차단기는 NG</strong>（카운트되기 어려워질 가능성 있음）</li>
+        <li>같은 영상을 다시 볼 경우 <strong>사이에 다른 영상 3〜4개 끼우고 10분 이상 간격을 둔 후</strong> 재생</li>
+        <li>매번 <strong>직접 검색해서</strong> 접속하기</li>
+      </ul>
+      <ul class="ng-list">
+        <li><strong>「Premium 계정이면 OK」는 잘못된 정보</strong>（연속 재생은 중복 카운트되기 어려움）</li>
+        <li><strong>「24시간 이내면 몇 번 재생해도 OK」는 잘못된 정보</strong>（단시간 연속 재생은 카운트되기 어려움）</li>
+      </ul>
     </div>
-    <div class="action-body">A strong signal of "want to watch again". <strong>Videos with more saves</strong> are more likely to be shown to others.</div>
   </div>
-  <div class="action-card action-5">
-    <div class="action-header">
-      <div class="action-num">5</div>
-      <div class="action-title">Repost・Share</div>
-      <div class="action-emoji">🔁</div>
+
+  <!-- Phase 3 -->
+
+  <div class="phase phase-3">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <div class="phase-title">확산 단계</div>
+      <div class="phase-timing">2〜48시간</div>
     </div>
-    <div class="action-body"><strong>Reposting</strong> pushes the video to your followers' For You pages — a powerful action. Sharing to other SNS spreads it even further!</div>
+    <div class="phase-body">
+      <p class="section-label">할 일</p>
+      <ul class="do-list">
+        <li>X・TikTok 등에서 <strong>매력적인 클립・영상 확산</strong></li>
+        <li>게시물에 <strong>YouTube URL 첨부</strong></li>
+        <li>「봐주세요」보다 <strong>「이 순간 대박」으로 보여주기</strong></li>
+        <li><strong>#PRODUCE101JAPAN新世界</strong> 등 JAY 팬 외에도 닿을 수 있는 태그 달기</li>
+        <li>직캠 썸네일이나 장면을 <strong>스크린샷・인용</strong>해서 리플・QT로 반응 유도</li>
+        <li>노출이 높아지는 <strong>오후 8〜10시</strong>에 맞춰 게시</li>
+      </ul>
+      <div class="note-important">YouTube는 「<strong>외부에서 사람을 데려온 영상</strong>」을 높게 평가합니다. SNS 유입이 추천 강화의 트리거가 됩니다. 캡션과 제목도 「클릭하고 싶어지는지」를 의식해 만들어요.</div>
+    </div>
   </div>
-  <div class="big-point">
-    <span class="sub">You don't need to make videos.</span>
-    <span style="background:linear-gradient(135deg,#69c9d0,#ff375f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Watch, engage, and share — that's how you support Jay!</span>
+
+  <!-- Phase 4 -->
+
+  <div class="phase phase-4">
+    <div class="phase-header">
+      <div class="phase-num">4</div>
+      <div class="phase-title">스밍 파티</div>
+      <div class="phase-timing">타이밍이 중요</div>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <div>
+          <p class="section-label">효과 있는 조건</p>
+          <ul class="do-list">
+            <li><strong>공개 직후</strong>に集中して行う</li>
+            <li>실제로 제대로 시청하기（풀 재생）</li>
+            <li>댓글・좋아요도 함께 하기</li>
+            <li>재화제・관련 이벤트 직후 타이밍</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <div>
+          <p class="section-label">효과가 낮은 상황</p>
+          <ul class="ng-list">
+            <li>공개 후 며칠 지난 후（초기 속도 단계 외）</li>
+            <li>루프 재생・ながら 시청</li>
+            <li>기존 팬끼리만 끝나는 경우</li>
+          </ul>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p class="section-label">재생목록 활용</p>
+      <ul class="do-list">
+        <li>재생목록은 <strong>틀어놓기・세션 연장</strong>에 유효</li>
+        <li>초기 속도 단계가 안정된 후 <strong>지속 시청 유도</strong>로 활용</li>
+        <li>재생목록에서 유입되면 <strong>시청 세션이 길어지기 쉬움</strong></li>
+      </ul>
+      <div class="note">재생목록は공개 직후の初速ブーストには向きませんが、<strong>落ち着いた後のながら再生や繰り返し視聴</strong>の流れを作るのに役立ちます。</div>
+      <div class="divider"></div>
+      <p class="section-label">재생 간격에 대해</p>
+      <ul class="do-list">
+        <li>MV와 MV 사이에 <strong>다른 영상 3〜4개</strong> 끼우기</li>
+        <li>연속 재생 시 <strong>10분 정도 간격</strong> 두기</li>
+      </ul>
+      <div class="note">스밍 파티は「初速を最大化する装置」。<strong>공개 직후に集中させることが重要</strong>で、日数が経ってからの単純な再生周回は効果が薄くなります。</div>
+    </div>
   </div>
-  <p class="footer-note">CHUANGJAY FD 💙</p>
+
+  <!-- Summary -->
+
+  <div class="summary">
+    <h3>SUMMARY</h3>
+    <div class="summary-grid">
+      <div class="summary-row"><span class="s-label">최중요 지표</span><span class="s-val">시청 유지율</span></div>
+      <div class="summary-row"><span class="s-label">승부 시간</span><span class="s-val">공개 후 24〜48h</span></div>
+      <div class="summary-row"><span class="s-label">확산의 열쇠</span><span class="s-val">외부 유입（SNS）</span></div>
+      <div class="summary-row"><span class="s-label">재생목록</span><span class="s-val">초기 속도 외에 유효</span></div>
+    </div>
+    <div class="big-point">
+      같은 사람이 10번 보는 것보다　<span>10명이 1번씩 보는 게 더 강하다</span>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    이 가이드는 YouTube 공식・Creator Insider 등을 바탕으로 작성되었습니다.<br>
+    주앙제이를 전력으로 응원하자 💙
+  </p>
+
 </div>
 </body>
 </html>
