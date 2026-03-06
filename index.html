@@ -357,28 +357,38 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-bottom: 16px;
-    position: relative;
   }
-  .summary-item {
+  .summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .summary-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     background: #2c2c2e;
     border: 1px solid var(--border);
-    padding: 12px 16px;
-    font-size: 13px;
-    border-radius: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    white-space: nowrap;
   }
   .s-label {
-    font-size: 9px;
+    font-size: 10px;
     color: var(--muted);
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 80px;
   }
-  .s-val { font-weight: 700; color: var(--label); }
+  .s-val { font-weight: 700; color: var(--label); font-size: 13px; }
 
   .big-point {
     text-align: center;
     padding: 18px;
-    font-size: 14px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--label);
     border: 1px solid rgba(10,132,255,0.25);
@@ -386,6 +396,7 @@
     line-height: 1.8;
     border-radius: 10px;
     position: relative;
+    white-space: nowrap;
   }
   .big-point span {
     background: linear-gradient(135deg, #64d2ff, #0a84ff);
@@ -594,25 +605,13 @@
   <div class="summary">
     <h3>SUMMARY</h3>
     <div class="summary-grid">
-      <div class="summary-item">
-        <div class="s-label">最重要指標</div>
-        <div class="s-val">視聴維持率</div>
-      </div>
-      <div class="summary-item">
-        <div class="s-label">勝負の時間</div>
-        <div class="s-val">公開後 24〜48h</div>
-      </div>
-      <div class="summary-item">
-        <div class="s-label">拡散のカギ</div>
-        <div class="s-val">外部流入（SNS）</div>
-      </div>
-      <div class="summary-item">
-        <div class="s-label">再生リスト</div>
-        <div class="s-val">初速以外で有効</div>
-      </div>
+      <div class="summary-row"><span class="s-label">最重要指標</span><span class="s-val">視聴維持率</span></div>
+      <div class="summary-row"><span class="s-label">勝負の時間</span><span class="s-val">公開後 24〜48h</span></div>
+      <div class="summary-row"><span class="s-label">拡散のカギ</span><span class="s-val">外部流入（SNS）</span></div>
+      <div class="summary-row"><span class="s-label">再生リスト</span><span class="s-val">初速以外で有効</span></div>
     </div>
     <div class="big-point">
-      同じ人が10回見るより<br><span>10人が1回見る方が強い</span>
+      同じ人が10回見るより　<span>10人が1回見る方が強い</span>
     </div>
   </div>
 
