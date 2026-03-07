@@ -1,0 +1,413 @@
+-----
+
+## layout: null
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Fancam Play Guide</title>
+<style>
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+color-scheme: dark;
+–bg: #000000;
+–card: #1c1c1e;
+–card2: #2c2c2e;
+–border: #38383a;
+–blue: #0a84ff;
+–blue2: #409cff;
+–sky: #64d2ff;
+–crystal: #a8d4ff;
+–white: #ffffff;
+–label: #ebebf5;
+–label2: rgba(235,235,245,0.6);
+–light: #2c2c2e;
+–muted: rgba(235,235,245,0.45);
+–danger: #ff453a;
+–green: #30d158;
+}
+
+body {
+background: var(–bg) !important;
+color: var(–label) !important;
+font-family: -apple-system, ‘Helvetica Neue’, ‘Noto Sans JP’, sans-serif;
+min-height: 100vh;
+padding: 40px 20px 60px;
+}
+
+.wrapper {
+max-width: 1000px;
+margin: 0 auto;
+}
+
+/* ===== HEADER ===== */
+.header {
+text-align: center;
+margin-bottom: 28px;
+position: relative;
+overflow: hidden;
+border-radius: 4px;
+}
+.header-bg {
+background: linear-gradient(160deg, #000000 0%, #0a1a3a 40%, #0a3a6e 70%, #0a84ff 100%);
+padding: 24px 32px 20px;
+position: relative;
+overflow: hidden;
+}
+.header-bg::before {
+content: ‘’;
+position: absolute;
+top: -40px; right: -40px;
+width: 180px; height: 180px;
+border: 2px solid rgba(10,132,255,0.2);
+transform: rotate(45deg);
+}
+.header-bg::after {
+content: ‘’;
+position: absolute;
+bottom: -30px; left: -30px;
+width: 130px; height: 130px;
+border: 2px solid rgba(10,132,255,0.15);
+transform: rotate(45deg);
+}
+.triangle-deco {
+position: absolute;
+top: 16px; left: 50%;
+transform: translateX(-50%);
+width: 0; height: 0;
+border-left: 30px solid transparent;
+border-right: 30px solid transparent;
+border-bottom: 26px solid rgba(10,132,255,0.15);
+}
+.tag {
+display: inline-block;
+font-size: 10px; font-weight: 700;
+letter-spacing: 4px; text-transform: uppercase;
+color: var(–sky);
+border: 1px solid rgba(100,210,255,0.4);
+padding: 4px 16px; margin-bottom: 16px;
+position: relative;
+}
+.header h1 {
+font-size: 37px; font-weight: 900;
+letter-spacing: 3px; line-height: 1.1;
+margin-bottom: 10px; color: var(–white);
+position: relative;
+}
+.header h1 .accent {
+background: linear-gradient(135deg, #64d2ff, #0a84ff, #ffffff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.header .sub {
+font-size: 12px; color: rgba(100,210,255,0.8);
+line-height: 1.9; letter-spacing: 0.5px; position: relative;
+}
+.header-stripe {
+height: 4px;
+background: linear-gradient(90deg, #000, #0a84ff, #64d2ff, #0a84ff, #000);
+}
+
+/* ===== INSIGHT ===== */
+.insight {
+background: var(–card);
+border: 1px solid var(–border);
+border-left: 3px solid var(–blue);
+padding: 18px 22px; margin-bottom: 24px;
+font-size: 13px; line-height: 1.9;
+color: var(–label2); border-radius: 12px;
+}
+.insight strong { color: var(–blue2); font-weight: 700; }
+.insight .headline {
+display: block; font-size: 14px; font-weight: 900;
+color: var(–label); margin-bottom: 6px;
+}
+
+/* ===== PHASE ===== */
+.phase {
+background: var(–card); border: 1px solid var(–border);
+margin-bottom: 16px; overflow: hidden; border-radius: 12px;
+}
+.phase-header {
+display: flex; align-items: stretch;
+border-bottom: 1px solid var(–border);
+}
+.phase-num {
+width: 56px; min-height: 54px;
+display: flex; align-items: center; justify-content: center;
+font-size: 26px; font-weight: 900;
+flex-shrink: 0; color: var(–white);
+}
+.phase-title {
+font-size: 15px; font-weight: 700;
+padding: 0 16px; display: flex; align-items: center; color: var(–label);
+}
+.phase-timing {
+margin-left: auto; font-size: 10px; font-weight: 700;
+letter-spacing: 0.5px; padding: 0 14px;
+border-left: 1px solid var(–border);
+display: flex; align-items: center;
+color: var(–muted); white-space: nowrap;
+}
+.phase-body { padding: 20px 22px; }
+
+.phase-1 .phase-num { background: rgba(10,132,255,0.2); color: var(–blue2); }
+.phase-1 { border-left: 3px solid var(–blue); }
+.phase-2 .phase-num { background: rgba(10,132,255,0.12); color: var(–sky); }
+.phase-2 { border-left: 3px solid var(–sky); }
+.phase-3 .phase-num { background: rgba(100,210,255,0.1); color: var(–sky); }
+.phase-3 { border-left: 3px solid #3a3a3c; }
+
+/* ===== LISTS ===== */
+.do-list, .ng-list {
+list-style: none; display: flex; flex-direction: column;
+gap: 7px; margin-bottom: 14px;
+}
+.do-list li, .ng-list li {
+display: flex; align-items: flex-start;
+gap: 10px; font-size: 13px; line-height: 1.7; color: var(–label2);
+}
+.do-list li strong, .ng-list li strong { color: var(–label); }
+.do-list li::before { content: ‘✓’; font-weight: 900; font-size: 12px; color: var(–green); flex-shrink: 0; margin-top: 3px; }
+.ng-list li::before { content: ‘✕’; font-weight: 900; font-size: 12px; color: var(–danger); flex-shrink: 0; margin-top: 3px; }
+
+.section-label {
+font-size: 12px; font-weight: 700; letter-spacing: 2px;
+text-transform: uppercase; color: var(–muted);
+margin-bottom: 10px; margin-top: 16px;
+}
+.section-label:first-child { margin-top: 0; }
+
+.note {
+background: #2c2c2e; border-left: 2px solid #48484a;
+padding: 10px 14px; font-size: 11.5px;
+color: var(–muted); line-height: 1.8;
+margin-top: 12px; border-radius: 0 6px 6px 0;
+}
+.note strong { color: var(–label2); }
+
+.note-important {
+background: rgba(10,132,255,0.08);
+border: 1px solid rgba(10,132,255,0.3);
+border-left: 3px solid var(–blue);
+padding: 12px 16px;
+font-size: 12.5px;
+color: var(–label2);
+line-height: 1.8;
+margin-top: 12px;
+border-radius: 0 8px 8px 0;
+}
+.note-important strong { color: var(–blue2); }
+
+/* ===== SETTINGS ===== */
+.yt-settings {
+border: 1px solid var(–border);
+margin-bottom: 12px; overflow: hidden; border-radius: 10px;
+}
+.setting-row {
+display: flex; align-items: center; justify-content: space-between;
+padding: 9px 14px; border-bottom: 1px solid var(–border);
+font-size: 13px; background: var(–card);
+}
+.setting-row:nth-child(even) { background: #242426; }
+.setting-row:last-child { border-bottom: none; }
+.setting-key { color: var(–label2); }
+.setting-val {
+font-weight: 700; font-size: 11px; letter-spacing: 1px;
+padding: 2px 12px; border-radius: 20px;
+}
+.val-on { background: rgba(48,209,88,0.15); color: var(–green); }
+.val-off { background: rgba(255,69,58,0.15); color: var(–danger); }
+.val-jp { background: rgba(10,132,255,0.15); color: var(–blue2); }
+.val-std { background: rgba(235,235,245,0.08); color: var(–label2); }
+
+/* ===== PRIORITY BADGE ===== */
+.priority-badge {
+display: block;
+background: rgba(255,69,58,0.15);
+color: var(–danger);
+border: 1px solid rgba(255,69,58,0.45);
+font-size: 13px; font-weight: 700; letter-spacing: 2px;
+padding: 8px 18px; margin-bottom: 14px; border-radius: 8px;
+text-align: center;
+}
+
+/* ===== 2-COLUMN LAYOUT ===== */
+.two-col {
+display: grid;
+grid-template-columns: 1fr 1px 1fr;
+gap: 0 18px;
+}
+.col-divider { background: var(–border); }
+
+/* ===== FAQ ===== */
+.faq-list {
+list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px;
+}
+.faq-list li {
+background: #242426; border: 1px solid var(–border);
+padding: 9px 14px; font-size: 12.5px;
+color: var(–label2); line-height: 1.7;
+border-radius: 8px; display: flex; gap: 8px; align-items: flex-start;
+}
+.faq-list li .q { color: var(–blue2); font-weight: 700; flex-shrink: 0; }
+.faq-list li strong { color: var(–label); }
+.faq-list li.ng strong { color: var(–danger); }
+
+.divider { height: 1px; background: var(–border); margin: 14px 0; }
+
+/* ===== FOOTER ===== */
+.footer-note {
+text-align: center; font-size: 11px;
+color: #409cff; margin-top: 28px; line-height: 1.8;
+}
+</style>
+
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+
+  <div class="header">
+    <div class="header-bg">
+      <div class="triangle-deco"></div>
+      <div class="tag">CHUANGJAY — SUMIN GUIDE</div>
+      <h1>Fancam <span class="accent">Play Guide</span></h1>
+    </div>
+    <div class="header-stripe"></div>
+  </div>
+
+  <div class="insight" style="text-align:center; padding: 16px 22px;">
+    <span style="font-size:16px; font-weight:900; color:#fff; letter-spacing:1px;">The battle is won within <span style="background:linear-gradient(135deg,#64d2ff,#0a84ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">24–48 hrs of release</span></span><span style="font-size:16px;-webkit-text-fill-color:initial;">‼️</span>
+  </div>
+
+  <!-- Phase 1 -->
+
+  <div class="phase phase-1">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <div class="phase-title">Before Release</div>
+      <div class="phase-timing">Before release</div>
+    </div>
+    <div class="phase-body">
+      <div class="two-col">
+        <!-- Left: To Do -->
+        <div>
+          <p class="section-label">To Do</p>
+          <ul class="do-list">
+            <li><strong>Log in</strong> to YouTube</li>
+            <li>Turn on <strong>notifications</strong> for the official channel</li>
+            <li><strong>Check &amp; share</strong> the release time in advance</li>
+          </ul>
+          <p class="section-label">NG</p>
+          <ul class="ng-list">
+            <li>No VPN</li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <!-- Right: Settings -->
+        <div>
+          <p class="section-label">YouTube Settings</p>
+          <div class="yt-settings">
+            <div class="setting-row"><span class="setting-key">Country / Region</span><span class="setting-val val-jp">Japan</span></div>
+            <div class="setting-row"><span class="setting-key">Autoplay</span><span class="setting-val val-off">Off</span></div>
+            <div class="setting-row"><span class="setting-key">Stats for nerds</span><span class="setting-val val-on">On</span></div>
+            <div class="setting-row"><span class="setting-key">Quality</span><span class="setting-val val-std">720p+</span></div>
+            <div class="setting-row"><span class="setting-key">Speed</span><span class="setting-val val-std">Normal (1.0x)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+
+  <div class="phase phase-2">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <div class="phase-title">Right After Release</div>
+      <div class="phase-timing">0–2 hrs ★Most Critical</div>
+    </div>
+    <div class="phase-body">
+      <div class="priority-badge">⚡ This is the most critical phase</div>
+      <div class="two-col">
+        <!-- Left: Must Do -->
+        <div>
+          <p class="section-label">Must Do</p>
+          <ul class="do-list">
+            <li><strong>Click immediately</strong> from the notification and watch</li>
+            <li>Watch the <strong>full video</strong> (first 30 sec are critical)</li>
+            <li>Leave a <strong>text comment</strong></li>
+            <li>Press <strong>Like</strong></li>
+          </ul>
+        </div>
+        <div class="col-divider"></div>
+        <!-- Right: NG -->
+        <div>
+          <p class="section-label">NG</p>
+          <ul class="ng-list">
+            <li>Muted &amp; idle / Stopping midway</li>
+            <li>Looping same account / multi-device at once</li>
+            <li>Background / split screen / fast forward</li>
+            <li>Emoji-only comments</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note-important">Clicking the notification boosts the algorithm. If you missed it, please <strong style="color:#ffffff; font-size:1.1em;">search manually</strong> and play.</div>
+      <div class="divider"></div>
+      <p class="section-label">FAQ</p>
+      <ul class="faq-list">
+        <li><span class="q">Q</span><span>Ads?　→　<strong>Skip is fine.</strong> Ad blockers are NG</span></li>
+        <li>
+          <span class="q">Q</span>
+          <span style="display:inline-block;">
+            <span>Want to rewatch?　→　<strong>Watch 3–4 other videos first, wait 10+ min</strong></span><br>
+            <span style="display:inline-block; padding-left:6em;">→　Always <strong>search manually</strong> each time</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Phase 3: Spread + Playlists -->
+
+  <div class="phase phase-3">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <div class="phase-title">Spread &amp; Playlists</div>
+      <div class="phase-timing">2–48 hrs</div>
+    </div>
+    <div class="phase-body">
+      <p class="section-label">Spread</p>
+      <ul class="do-list">
+        <li>Share <strong>clips &amp; highlights</strong> on X・TikTok</li>
+        <li>Include the <strong>YouTube URL</strong> in your posts</li>
+        <li>Instead of "please watch," show them <strong>"this moment is amazing"</strong></li>
+        <li>Use tags like <strong>#PRODUCE101JAPAN新世界</strong> to reach beyond Jay's fanbase</li>
+        <li><strong>Screenshot or quote</strong> scenes to spark reactions via replies &amp; QTs</li>
+        <li>Post during peak hours: <strong>8–10 PM</strong></li>
+      </ul>
+      <div class="divider"></div>
+      <p class="section-label">Playlists</p>
+      <ul class="do-list">
+        <li>Use for <strong>background play &amp; rewatching</strong> after the initial boost</li>
+        <li>When rewatching, <strong>watch 3–4 other videos first and wait 10+ min</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    Based on YouTube official sources &amp; Creator Insider.<br>
+    Let's support PRINCE JAY with everything we have 💙
+  </p>
+
+</div>
+</body>
+</html>
