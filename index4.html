@@ -13,30 +13,26 @@ body { background: #000; color: #e8e8f0; font-family: -apple-system, 'Helvetica 
 .header .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; color: #64d2ff; border: 1px solid rgba(100,210,255,0.4); padding: 3px 14px; margin-bottom: 14px; }
 .header h1 { font-size: 42px; font-weight: 900; color: #fff; margin: 0 0 8px; letter-spacing: 2px; }
 .header h1 span { color: #64d2ff; }
-.header p { font-size: 12px; color: rgba(100,210,255,0.8); margin: 0; }
 .stripe { height: 3px; background: linear-gradient(90deg, #000, #0a84ff, #64d2ff, #0a84ff, #000); margin-bottom: 20px; }
 
-.insight { background: #1c1c1e; border: 1px solid #38383a; border-left: 3px solid #0a84ff; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 13px; line-height: 1.9; color: rgba(235,235,245,0.7); }
-.insight strong { color: #409cff; }
-.insight .hl { display: block; font-size: 14px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+.insight { background: #1c1c1e; border: 1px solid #38383a; border-left: 3px solid #0a84ff; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 15px; font-weight: 900; color: #fff; text-align: center; }
+.insight span { color: #64d2ff; }
 
 .phase { background: #1c1c1e; border: 1px solid #38383a; border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
 .phase-1 { border-left: 3px solid #0a84ff; }
 .phase-2 { border-left: 3px solid #64d2ff; }
 .phase-3 { border-left: 3px solid #3a3a3c; }
-.phase-4 { border-left: 3px solid #30d158; }
 
 .ph { display: flex; align-items: stretch; border-bottom: 1px solid #38383a; }
 .pn { width: 52px; min-height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0; }
 .phase-1 .pn { background: rgba(10,132,255,0.15); color: #409cff; }
 .phase-2 .pn { background: rgba(10,132,255,0.1); color: #64d2ff; }
 .phase-3 .pn { background: rgba(100,210,255,0.08); color: #64d2ff; }
-.phase-4 .pn { background: rgba(48,209,88,0.08); color: #30d158; }
 .pt { font-size: 15px; font-weight: 700; padding: 0 14px; display: flex; align-items: center; color: #e8e8f0; }
 .ptm { margin-left: auto; font-size: 10px; font-weight: 700; padding: 0 12px; border-left: 1px solid #38383a; display: flex; align-items: center; color: rgba(235,235,245,0.4); white-space: nowrap; }
 .pb { padding: 18px 20px; }
 
-.two { display: grid; grid-template-columns: 1.5fr 1px 1fr; gap: 0 16px; }
+.two { display: grid; grid-template-columns: 2fr 1px 1fr; gap: 0 16px; }
 .div-line { background: #38383a; }
 
 .lbl { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(235,235,245,0.4); margin-bottom: 8px; margin-top: 14px; }
@@ -50,11 +46,8 @@ ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-si
 
 .badge { display: block; background: rgba(255,69,58,0.12); color: #ff453a; border: 1px solid rgba(255,69,58,0.4); font-size: 13px; font-weight: 700; padding: 8px; margin-bottom: 14px; border-radius: 6px; text-align: center; }
 
-.note { background: #2c2c2e; border-left: 2px solid #48484a; padding: 10px 13px; font-size: 11px; color: rgba(235,235,245,0.45); line-height: 1.8; margin-top: 10px; border-radius: 0 5px 5px 0; }
-.note strong { color: rgba(235,235,245,0.65); }
-
 .ni { background: rgba(10,132,255,0.07); border: 1px solid rgba(10,132,255,0.25); border-left: 3px solid #0a84ff; padding: 11px 14px; font-size: 12px; color: rgba(235,235,245,0.65); line-height: 1.8; margin-top: 10px; border-radius: 0 7px 7px 0; }
-.ni strong { color: #409cff; }
+.ni strong { color: #fff; }
 
 .settings { border: 1px solid #38383a; border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
 .sr { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #38383a; font-size: 12px; background: #1c1c1e; }
@@ -74,15 +67,6 @@ ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-si
 
 .div { height: 1px; background: #38383a; margin: 12px 0; }
 
-.summary { background: #1c1c1e; border: 1px solid #38383a; border-top: 3px solid #0a84ff; border-radius: 10px; padding: 24px; margin-top: 6px; }
-.summary h3 { text-align: center; font-size: 18px; letter-spacing: 5px; color: #409cff; margin-bottom: 16px; font-weight: 900; }
-.sgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-.srow { background: #2c2c2e; border: 1px solid #38383a; padding: 9px 12px; border-radius: 7px; display: flex; gap: 8px; align-items: center; }
-.sl { font-size: 9px; color: rgba(235,235,245,0.4); letter-spacing: 2px; text-transform: uppercase; flex-shrink: 0; }
-.sv2 { font-weight: 700; color: #e8e8f0; font-size: 12px; }
-.big { text-align: center; padding: 16px; font-size: 16px; font-weight: 700; color: #e8e8f0; border: 1px solid rgba(10,132,255,0.2); background: rgba(10,132,255,0.07); border-radius: 8px; line-height: 1.8; }
-.big span { color: #64d2ff; }
-
 .footer { text-align: center; font-size: 11px; color: #409cff; margin-top: 24px; line-height: 1.8; }
 </style>
 
@@ -93,15 +77,11 @@ ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-si
 <div class="header">
   <div class="tag">CHUANGJAY — SUMIN GUIDE</div>
   <h1>Fancam <span>Play Guide</span></h1>
-  <p>A complete manual for National &amp; World Producers to maximize views when a new fancam drops</p>
 </div>
 <div class="stripe"></div>
 
 <div class="insight">
-  <span class="hl">Key Principle</span>
-  <strong>The battle is won in the first 24–48 hours.</strong> YouTube decides whether to promote a video right after it drops.<br>
-  It's more powerful for <strong>10 people to watch once</strong> than 1 person to watch 10 times.<br>
-  The goal: make others want to click.
+  The battle is won within <span>24–48 hrs of release</span> ‼️
 </div>
 
 <div class="phase phase-1">
@@ -117,8 +97,11 @@ ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-si
         <ul class="do">
           <li><strong>Log in</strong> to YouTube</li>
           <li>Turn on <strong>notifications</strong> for the official channel</li>
-          <li>Check &amp; share the release time in advance</li>
-          <li>Spread the word to fans on SNS</li>
+          <li><strong>Check &amp; share</strong> the release time in advance</li>
+        </ul>
+        <p class="lbl">NG</p>
+        <ul class="ng">
+          <li>No VPN</li>
         </ul>
       </div>
       <div class="div-line"></div>
@@ -133,7 +116,6 @@ ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-si
         </div>
       </div>
     </div>
-    <div class="note">Check settings via the official app or website. <strong>World Producers: also set to "Japan"</strong> (so views count on Japanese YouTube). <strong>No VPN.</strong></div>
   </div>
 </div>
 
@@ -147,42 +129,31 @@ ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-si
     <div class="badge">⚡ This is the most critical phase</div>
     <div class="two">
       <div>
-        <p class="lbl">Must Do (in order)</p>
+        <p class="lbl">Must Do</p>
         <ul class="do">
-          <li><strong>Click immediately</strong> from the notification and watch without leaving</li>
-          <li>Watch the <strong>full video</strong> from start to finish</li>
-          <li>Don't drop off early (<strong>first 30 seconds are critical</strong>)</li>
-          <li>Leave a <strong>text comment</strong> (specific reactions are great)</li>
+          <li><strong>Click immediately</strong> from the notification and watch</li>
+          <li>Watch the <strong>full video</strong> (first 30 sec are critical)</li>
+          <li>Leave a <strong>text comment</strong></li>
           <li>Press <strong>Like</strong></li>
         </ul>
-        <div class="ni">Clicking from a notification <strong>directly counts toward CTR</strong>, which positively impacts the YouTube algorithm. If you missed it, please <strong>search manually</strong> and play the video.</div>
       </div>
       <div class="div-line"></div>
       <div>
-        <p class="lbl">NG — Do NOT do these</p>
+        <p class="lbl">NG</p>
         <ul class="ng">
-          <li>Muted &amp; idle</li>
-          <li>Stopping or leaving midway</li>
-          <li>Looping on the same account</li>
-          <li>Simultaneous playback on same account</li>
-          <li>Background / split-screen play</li>
-          <li>Repeatedly fast-forwarding or pausing</li>
-          <li>Spamming emoji-only comments</li>
+          <li>Muted &amp; idle / Stopping midway</li>
+          <li>Looping same account / multi-device</li>
+          <li>Background / split screen / fast forward</li>
+          <li>Emoji-only comments</li>
         </ul>
       </div>
     </div>
-    <div class="ni">Right after release, YouTube measures <strong>CTR x watch retention</strong> to decide whether to promote. Higher scores lead to wider distribution.</div>
+    <div class="ni">Clicking the notification boosts the algorithm. If you missed it, please <strong>search manually</strong> and play.</div>
     <div class="div"></div>
     <p class="lbl">FAQ</p>
-    <ul class="do">
-      <li><strong>Skipping ads is fine</strong> (no impact on view count)</li>
-      <li>But <strong>ad blockers are NG</strong> (may prevent views from being counted)</li>
-      <li>To rewatch, <strong>watch 3–4 other videos first and wait 10+ min</strong> before replaying</li>
-      <li>Always <strong>search manually</strong> to access each time</li>
-    </ul>
-    <ul class="ng">
-      <li><strong>"Premium = unlimited replays" is a myth</strong> (repeated plays still won't count)</li>
-      <li><strong>"Any replays within 24hrs is fine" is a myth</strong> (rapid replays are unlikely to count)</li>
+    <ul class="faq">
+      <li><span class="q">Q</span><span>Ads? → <strong>Skip is fine.</strong> Ad blockers are NG</span></li>
+      <li><span class="q">Q</span><span>Want to rewatch? → <strong>Watch 3–4 other videos first, wait 10+ min</strong> → Always <strong>search manually</strong> each time</span></li>
     </ul>
   </div>
 </div>
@@ -190,78 +161,25 @@ ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-si
 <div class="phase phase-3">
   <div class="ph">
     <div class="pn">3</div>
-    <div class="pt">Spread Phase</div>
+    <div class="pt">Spread &amp; Playlists</div>
     <div class="ptm">2–48 hrs</div>
   </div>
   <div class="pb">
-    <p class="lbl">To Do</p>
+    <p class="lbl">Spread</p>
     <ul class="do">
-      <li>Share <strong>clips &amp; highlights</strong> on X, TikTok, etc.</li>
+      <li>Share <strong>clips &amp; highlights</strong> on X / TikTok</li>
       <li>Include the <strong>YouTube URL</strong> in your posts</li>
       <li>Instead of "please watch," show them <strong>"this moment is amazing"</strong></li>
       <li>Use tags like <strong>#PRODUCE101JAPAN新世界</strong> to reach beyond Jay's fanbase</li>
       <li><strong>Screenshot or quote</strong> scenes to spark reactions via replies &amp; QTs</li>
       <li>Post during peak hours: <strong>8–10 PM</strong></li>
     </ul>
-    <div class="ni">YouTube rewards videos that <strong>bring in outside viewers</strong>. SNS traffic is a key trigger for stronger recommendations. Craft captions that make people want to click.</div>
-  </div>
-</div>
-
-<div class="phase phase-4">
-  <div class="ph">
-    <div class="pn">4</div>
-    <div class="pt">Sumin Party</div>
-    <div class="ptm">Timing matters</div>
-  </div>
-  <div class="pb">
-    <div class="two">
-      <div>
-        <p class="lbl">When it works</p>
-        <ul class="do">
-          <li>Focus it <strong>right after release</strong></li>
-          <li>Actually watch properly (full playback)</li>
-          <li>Comment &amp; like at the same time</li>
-          <li>Right after a re-buzz or related event</li>
-        </ul>
-      </div>
-      <div class="div-line"></div>
-      <div>
-        <p class="lbl">When it doesn't work</p>
-        <ul class="ng">
-          <li>Days after release (outside initial phase)</li>
-          <li>Looping / passive watching</li>
-          <li>Only existing fans participating</li>
-        </ul>
-      </div>
-    </div>
     <div class="div"></div>
-    <p class="lbl">Playlist Usage</p>
+    <p class="lbl">Playlists</p>
     <ul class="do">
-      <li>Playlists are great for <strong>background play &amp; extending sessions</strong></li>
-      <li>Use as a <strong>path to continued viewing</strong> after the initial phase</li>
-      <li>Playlist-driven views tend to <strong>extend watch sessions</strong></li>
+      <li>Use for <strong>background play &amp; rewatching</strong> after the initial boost</li>
+      <li>When rewatching, <strong>watch 3–4 other videos first and wait 10+ min</strong></li>
     </ul>
-    <div class="note">Playlists aren't ideal for the initial boost, but they're great for building a habit of <strong>background play and rewatching</strong> over time.</div>
-    <div class="div"></div>
-    <p class="lbl">Replay Intervals</p>
-    <ul class="do">
-      <li>Insert <strong>3–4 other videos</strong> between replays</li>
-      <li>Leave a <strong>~10 min gap</strong> between replays</li>
-    </ul>
-    <div class="note">A sumin party is a tool to maximize early momentum. <strong>Concentrating it right after release is key</strong> — simple replay loops days later have little effect.</div>
-  </div>
-</div>
-
-<div class="summary">
-  <h3>SUMMARY</h3>
-  <div class="sgrid">
-    <div class="srow"><span class="sl">Key Metric</span><span class="sv2">Watch Retention</span></div>
-    <div class="srow"><span class="sl">Critical Window</span><span class="sv2">First 24–48h</span></div>
-    <div class="srow"><span class="sl">Spread Key</span><span class="sv2">External traffic (SNS)</span></div>
-    <div class="srow"><span class="sl">Playlists</span><span class="sv2">After initial phase</span></div>
-  </div>
-  <div class="big">
-    10 people watching once &nbsp;<span>is stronger than 1 person watching 10 times</span>
   </div>
 </div>
 
