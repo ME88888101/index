@@ -2,309 +2,611 @@
 
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Fancam Play Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
-<style>
-  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FANCAM Viewing Guide</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+```
 :root {
-–bg: #000000;
-–card: #1c1c1e;
-–card2: #2c2c2e;
-–border: #38383a;
-–blue: #0a84ff;
-–blue2: #409cff;
-–sky: #64d2ff;
-–crystal: #a8d4ff;
-–white: #ffffff;
-–label: #ebebf5;
-–label2: rgba(235,235,245,0.6);
-–light: #2c2c2e;
-–muted: rgba(235,235,245,0.45);
-–danger: #ff453a;
-–green: #30d158;
+  --blue: #1a73e8;
+  --blue-light: #e8f0fe;
+  --blue-mid: #4285f4;
+  --dark: #1a1a2e;
+  --text: #202124;
+  --muted: #5f6368;
+  --border: #dadce0;
+  --warn-bg: #fff8e1;
+  --warn-border: #ffc107;
+  --warn-text: #6d4c00;
+  --ok-bg: #e8f5e9;
+  --ok-border: #66bb6a;
+  --ok-text: #1b5e20;
+  --card-bg: #ffffff;
+  --page-bg: #f1f3f4;
 }
 
 body {
-background: var(–bg);
-color: var(–label);
-font-family: ‘Noto Sans JP’, sans-serif;
-min-height: 100vh;
-padding: 40px 20px 60px;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 0 0 60px;
 }
 
-.wrapper { max-width: 860px; margin: 0 auto; }
+/* ── Header ── */
+header {
+  background: var(--dark);
+  color: #fff;
+  text-align: center;
+  padding: 28px 20px 20px;
+}
+header .sub {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8ab4f8;
+  margin-bottom: 8px;
+}
+header h1 {
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+header p.lead {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #bdc1c6;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-.header { text-align: center; margin-bottom: 28px; padding: 0; position: relative; overflow: hidden; border-radius: 4px; }
-.header-bg { background: linear-gradient(160deg, #000000 0%, #0a1a3a 40%, #0a3a6e 70%, #0a84ff 100%); padding: 44px 32px 36px; position: relative; overflow: hidden; }
-.header-bg::before { content: ‘’; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border: 2px solid rgba(10,132,255,0.2); transform: rotate(45deg); }
-.header-bg::after { content: ‘’; position: absolute; bottom: -30px; left: -30px; width: 130px; height: 130px; border: 2px solid rgba(10,132,255,0.15); transform: rotate(45deg); }
-.triangle-deco { position: absolute; top: 16px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 26px solid rgba(10,132,255,0.15); }
-.tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(–sky); border: 1px solid rgba(100,210,255,0.4); padding: 4px 16px; margin-bottom: 16px; position: relative; }
-.header h1 { font-family: ‘Bebas Neue’, sans-serif; font-size: 54px; letter-spacing: 5px; line-height: 1.1; margin-bottom: 10px; color: var(–white); position: relative; }
-.header h1 .accent { background: linear-gradient(135deg, #64d2ff, #0a84ff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.header .sub { font-size: 12px; color: rgba(100,210,255,0.8); line-height: 1.9; letter-spacing: 0.5px; position: relative; }
-.header-stripe { height: 4px; background: linear-gradient(90deg, #000, #0a84ff, #64d2ff, #0a84ff, #000); }
+/* ── Main ── */
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-.insight { background: var(–card); border: 1px solid var(–border); border-left: 3px solid var(–blue); padding: 18px 22px; margin-bottom: 24px; font-size: 13px; line-height: 1.9; color: var(–label2); border-radius: 12px; }
-.insight strong { color: var(–blue2); font-weight: 700; }
-.insight .headline { display: block; font-size: 14px; font-weight: 900; color: var(–label); margin-bottom: 6px; }
+/* ── Principle box ── */
+.principle {
+  background: var(--blue);
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.principle h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+.principle p { font-size: 14px; line-height: 1.7; }
+.principle strong { font-weight: 700; }
 
-.phase { background: var(–card); border: 1px solid var(–border); margin-bottom: 16px; overflow: hidden; border-radius: 12px; }
-.phase-header { display: flex; align-items: stretch; border-bottom: 1px solid var(–border); }
-.phase-num { width: 56px; min-height: 54px; display: flex; align-items: center; justify-content: center; font-family: ‘Bebas Neue’, sans-serif; font-size: 28px; flex-shrink: 0; color: var(–white); }
-.phase-title { font-size: 15px; font-weight: 700; padding: 0 16px; display: flex; align-items: center; color: var(–label); }
-.phase-timing { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; padding: 0 14px; border-left: 1px solid var(–border); display: flex; align-items: center; color: var(–muted); white-space: nowrap; }
-.phase-body { padding: 20px 22px; }
+/* ── Step card ── */
+.step-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08), 0 0 0 1px var(--border);
+  overflow: hidden;
+}
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.step-title { font-size: 16px; font-weight: 700; }
+.step-subtitle { font-size: 12px; color: var(--muted); margin-top: 1px; }
 
-.phase-1 .phase-num { background: rgba(10,132,255,0.2); color: var(–blue2); }
-.phase-1 { border-left: 3px solid var(–blue); }
-.phase-2 .phase-num { background: rgba(10,132,255,0.12); color: var(–sky); }
-.phase-2 { border-left: 3px solid var(–sky); }
-.phase-3 .phase-num { background: rgba(100,210,255,0.1); color: var(–sky); }
-.phase-3 { border-left: 3px solid #3a3a3c; }
-.phase-4 .phase-num { background: rgba(48,209,88,0.1); color: var(–green); }
-.phase-4 { border-left: 3px solid var(–green); }
+.step-body { padding: 18px 20px; display: flex; flex-direction: column; gap: 16px; }
 
-.do-list, .ng-list { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
-.do-list li, .ng-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.7; color: var(–label2); }
-.do-list li strong, .ng-list li strong { color: var(–label); }
-.do-list li::before { content: ‘✓’; font-weight: 900; font-size: 12px; color: var(–green); flex-shrink: 0; margin-top: 3px; }
-.ng-list li::before { content: ‘✕’; font-weight: 900; font-size: 12px; color: var(–danger); flex-shrink: 0; margin-top: 3px; }
+/* ── Checklist ── */
+.checklist-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.checklist li::before {
+  content: '✓';
+  color: var(--blue);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.checklist li strong { font-weight: 600; }
 
-.section-label { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(–muted); margin-bottom: 10px; margin-top: 16px; }
-.section-label:first-child { margin-top: 0; }
+/* ── Settings table ── */
+.settings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.settings-table caption {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  margin-bottom: 8px;
+  caption-side: top;
+}
+.settings-table tr { border-bottom: 1px solid var(--border); }
+.settings-table tr:last-child { border-bottom: none; }
+.settings-table td { padding: 9px 6px; }
+.settings-table td:first-child { color: var(--muted); width: 44%; }
+.settings-table td:last-child { font-weight: 600; }
 
-.note { background: #2c2c2e; border-left: 2px solid #48484a; padding: 10px 14px; font-size: 10.5px; color: var(–muted); line-height: 1.8; margin-top: 12px; border-radius: 0 6px 6px 0; }
-.note strong { color: var(–label2); }
+/* ── Important banner ── */
+.important-banner {
+  background: var(--blue-light);
+  border-left: 4px solid var(--blue-mid);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+}
 
-.note-important { background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.3); border-left: 3px solid var(–blue); padding: 12px 16px; font-size: 12.5px; color: var(–label2); line-height: 1.8; margin-top: 12px; border-radius: 0 8px 8px 0; }
-.note-important strong { color: var(–blue2); }
+/* ── Phase badge ── */
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff3e0;
+  color: #e65100;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #ffb74d;
+  margin-bottom: 12px;
+}
 
-.yt-settings { border: 1px solid var(–border); margin-bottom: 12px; overflow: hidden; border-radius: 10px; }
-.setting-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid var(–border); font-size: 13px; background: var(–card); }
-.setting-row:nth-child(even) { background: #242426; }
-.setting-row:last-child { border-bottom: none; }
-.setting-key { color: var(–label2); }
-.setting-val { font-weight: 700; font-size: 11px; letter-spacing: 1px; padding: 2px 12px; border-radius: 20px; }
-.val-on { background: rgba(48,209,88,0.15); color: var(–green); }
-.val-off { background: rgba(255,69,58,0.15); color: var(–danger); }
-.val-jp { background: rgba(10,132,255,0.15); color: var(–blue2); }
-.val-std { background: rgba(235,235,245,0.08); color: var(–label2); }
+/* ── NG list ── */
+.ng-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ng-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #c62828;
+}
+.ng-list li::before {
+  content: '✕';
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.ng-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #c62828;
+  margin-bottom: 8px;
+}
 
-.priority-badge { display: block; background: rgba(255,69,58,0.15); color: var(–danger); border: 1px solid rgba(255,69,58,0.45); font-size: 14px; font-weight: 700; letter-spacing: 2px; padding: 10px 18px; margin-bottom: 16px; border-radius: 8px; text-align: center; }
+/* ── FAQ ── */
+.faq { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: var(--page-bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.faq-item .q { font-weight: 700; color: var(--blue); margin-bottom: 4px; }
 
-.divider { height: 1px; background: var(–border); margin: 14px 0; }
+/* ── Myth box ── */
+.myth-box {
+  background: #fce4ec;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.myth-box .myth-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #880e4f;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.myth-box li { margin-left: 16px; margin-bottom: 4px; }
 
-.summary { background: var(–card); border: 1px solid var(–border); border-top: 3px solid var(–blue); border-radius: 12px; padding: 28px; margin-top: 8px; position: relative; overflow: hidden; }
-.summary::before { content: ‘’; position: absolute; top: -50px; right: -50px; width: 160px; height: 160px; border: 2px solid rgba(10,132,255,0.08); transform: rotate(45deg); }
-.summary h3 { font-family: ‘Bebas Neue’, sans-serif; font-size: 22px; letter-spacing: 5px; color: var(–blue2); margin-bottom: 18px; text-align: center; position: relative; }
-.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-.summary-row { display: flex; align-items: center; gap: 10px; background: #2c2c2e; border: 1px solid var(–border); padding: 10px 14px; border-radius: 8px; }
-.s-label { font-size: 10px; color: var(–muted); letter-spacing: 2px; text-transform: uppercase; flex-shrink: 0; min-width: 80px; }
-.s-val { font-weight: 700; color: var(–label); font-size: 13px; }
+/* ── Two-col grid ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
+.col-box {
+  background: var(--page-bg);
+  border-radius: 8px;
+  padding: 14px;
+}
+.col-box .col-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.col-box.good .col-label { color: #2e7d32; }
+.col-box.bad  .col-label { color: #c62828; }
 
-.big-point { text-align: center; padding: 18px; font-size: 20px; font-weight: 700; color: var(–label); border: 1px solid rgba(10,132,255,0.25); background: rgba(10,132,255,0.08); line-height: 1.8; border-radius: 10px; position: relative; }
-.big-point span { background: linear-gradient(135deg, #64d2ff, #0a84ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+/* ── Interval note ── */
+.interval-note {
+  background: var(--blue-light);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.interval-note .in-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--blue);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.interval-note ul { margin-left: 18px; }
+.interval-note li { margin-bottom: 4px; }
 
-.two-col { display: flex; flex-direction: row; gap: 0; align-items: flex-start; }
-.two-col > div:not(.col-divider) { flex: 1; }
-.two-col > div:not(.col-divider):first-child { flex: 1.4; }
-.col-divider { width: 1px; background: var(–border); align-self: stretch; margin: 0 18px; flex-shrink: 0; }
+/* ── Summary card ── */
+.summary-card {
+  background: var(--dark);
+  color: #fff;
+  border-radius: 12px;
+  padding: 22px;
+}
+.summary-card h3 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8ab4f8;
+  margin-bottom: 14px;
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+@media (max-width: 400px) { .summary-grid { grid-template-columns: 1fr; } }
+.summary-item { background: rgba(255,255,255,.06); border-radius: 8px; padding: 12px; }
+.summary-item .s-label { font-size: 10px; color: #8ab4f8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.summary-item .s-val { font-size: 14px; font-weight: 600; }
+.summary-note {
+  text-align: center;
+  font-size: 13px;
+  color: #bdc1c6;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 14px;
+}
 
-.footer-note { text-align: center; font-size: 11px; color: #409cff; margin-top: 28px; line-height: 1.8; }
-</style>
+/* ── Footer ── */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  padding: 0 16px;
+  line-height: 1.7;
+}
 
+section { display: flex; flex-direction: column; gap: 12px; }
+hr.divider { border: none; border-top: 1px solid var(--border); }
+```
+
+  </style>
 </head>
 <body>
-<div class="wrapper">
 
-  <div class="header">
-    <div class="header-bg">
-      <div class="triangle-deco"></div>
-      <div class="tag">CHUANGJAY — SUMIN GUIDE</div>
-      <h1>Fancam<br><span class="accent">Play Guide</span></h1>
-      <p class="sub">A complete manual for National &amp; World Producers<br>to maximize views when a new fancam drops</p>
-    </div>
-    <div class="header-stripe"></div>
+<header>
+  <div class="sub">CHUANGJAY — SUMIN GUIDE</div>
+  <h1>FANCAM Viewing Guide</h1>
+  <p class="lead">The complete manual for PRODUCE 101 JAPAN fans to maximize view counts when a new FANCAM drops</p>
+</header>
+
+<main>
+
+  <!-- Principle -->
+
+  <div class="principle">
+    <h2>Core Principle You Must Know First</h2>
+    <p><strong>The first 24–48 hours after release are everything.</strong> YouTube decides within the first moments whether to spread a video.<br>
+    <strong>10 people watching once is stronger than 1 person watching 10 times.</strong><br>
+    The goal is to <strong>create a state where other people want to click</strong>.</p>
   </div>
 
-  <div class="insight">
-    <span class="headline">Key Principle</span>
-    <strong>The battle is won in the first 24–48 hours.</strong> YouTube decides whether to promote a video right after it drops.<br>
-    It's more powerful for <strong>10 people to watch once</strong> than 1 person to watch 10 times.<br>
-    The goal: make others want to click.
-  </div>
+  <!-- Step 1 -->
 
-  <div class="phase phase-1">
-    <div class="phase-header">
-      <div class="phase-num">1</div>
-      <div class="phase-title">Before Release</div>
-      <div class="phase-timing">Before release</div>
-    </div>
-    <div class="phase-body">
-      <div class="two-col">
-        <div>
-          <p class="section-label">To Do</p>
-          <ul class="do-list">
-            <li><strong>Log in</strong> to YouTube</li>
-            <li>Turn on <strong>notifications</strong> for the official channel</li>
-            <li>Check &amp; share the release time in advance</li>
-            <li>Spread the word to fans on SNS</li>
-          </ul>
-        </div>
-        <div class="col-divider"></div>
-        <div>
-          <p class="section-label">YouTube Settings</p>
-          <div class="yt-settings">
-            <div class="setting-row"><span class="setting-key">Country / Region</span><span class="setting-val val-jp">Japan</span></div>
-            <div class="setting-row"><span class="setting-key">Autoplay</span><span class="setting-val val-off">Off</span></div>
-            <div class="setting-row"><span class="setting-key">Stats for nerds</span><span class="setting-val val-on">On</span></div>
-            <div class="setting-row"><span class="setting-key">Quality</span><span class="setting-val val-std">720p+</span></div>
-            <div class="setting-row"><span class="setting-key">Speed</span><span class="setting-val val-std">Normal (1.0x)</span></div>
-          </div>
-        </div>
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Preparation</div>
+        <div class="step-subtitle">Before release</div>
       </div>
-      <div class="note">Check settings via the official app or website. <strong>World Producers: also set to "Japan"</strong> (so views count on Japanese YouTube). <strong>No VPN.</strong></div>
     </div>
+    <div class="step-body">
+      <section>
+        <div class="checklist-label">What to do</div>
+        <ul class="checklist">
+          <li><strong>Log in</strong> to YouTube</li>
+          <li>Turn <strong>notifications ON</strong> for the official PRODUCE 101 JAPAN channel</li>
+          <li>Check and share the release time in advance</li>
+          <li>Spread the word to fans around you on SNS</li>
+        </ul>
+      </section>
+
+```
+  <hr class="divider" />
+
+  <section>
+    <table class="settings-table">
+      <caption>YouTube Settings Check</caption>
+      <tbody>
+        <tr><td>Country / Region</td><td>Japan</td></tr>
+        <tr><td>Autoplay</td><td>Off</td></tr>
+        <tr><td>Stats for Nerds</td><td>On</td></tr>
+        <tr><td>Playback Quality</td><td>720p or higher</td></tr>
+        <tr><td>Playback Speed</td><td>Normal (1.0×)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="important-banner">
+    Check settings in the official app or official site. <strong>Global Producers (セカプ) are also recommended to set their region to "Japan"</strong> so that views count on Japanese YouTube. <strong>VPN is NOT allowed.</strong>
   </div>
-
-  <div class="phase phase-2">
-    <div class="phase-header">
-      <div class="phase-num">2</div>
-      <div class="phase-title">Right After Release</div>
-      <div class="phase-timing">0–2 hrs ★Most Critical</div>
-    </div>
-    <div class="phase-body">
-      <div class="priority-badge">⚡ This is the most critical phase</div>
-      <div class="two-col">
-        <div>
-          <p class="section-label">Must Do (in order)</p>
-          <ul class="do-list">
-            <li><strong>Click immediately</strong> from the notification and watch without leaving</li>
-            <li>Watch the <strong>full video</strong> from start to finish</li>
-            <li>Don't drop off early (<strong>first 30 seconds are critical</strong>)</li>
-            <li>Leave a <strong>text comment</strong> (specific reactions are great)</li>
-            <li>Press <strong>Like</strong></li>
-          </ul>
-          <div class="note-important">Clicking from a notification <strong>directly counts toward CTR</strong>, which positively impacts the YouTube algorithm. If you missed it, please <strong>search manually</strong> and play the video.</div>
-        </div>
-        <div class="col-divider"></div>
-        <div>
-          <p class="section-label">NG — Do NOT do these</p>
-          <ul class="ng-list">
-            <li>Muted &amp; idle</li>
-            <li>Stopping or leaving midway</li>
-            <li>Looping on the same account</li>
-            <li>Simultaneous playback on same account</li>
-            <li>Background / split-screen play</li>
-            <li>Repeatedly fast-forwarding or pausing</li>
-            <li>Spamming emoji-only comments</li>
-          </ul>
-        </div>
-      </div>
-      <div class="note-important">Right after release, YouTube measures <strong>CTR x watch retention</strong> to decide whether to promote. Higher scores lead to wider distribution.</div>
-      <div class="divider"></div>
-      <p class="section-label">FAQ</p>
-      <ul class="do-list">
-        <li><strong>Skipping ads is fine</strong> (no impact on view count)</li>
-        <li>But <strong>ad blockers are NG</strong> (may prevent views from being counted)</li>
-        <li>To rewatch, <strong>watch 3–4 other videos first and wait 10+ min</strong> before replaying</li>
-        <li>Always <strong>search manually</strong> to access each time</li>
-      </ul>
-      <ul class="ng-list">
-        <li><strong>"Premium = unlimited replays" is a myth</strong> (repeated plays still won't count)</li>
-        <li><strong>"Any replays within 24hrs is fine" is a myth</strong> (rapid replays are unlikely to count)</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="phase phase-3">
-    <div class="phase-header">
-      <div class="phase-num">3</div>
-      <div class="phase-title">Spread Phase</div>
-      <div class="phase-timing">2–48 hrs</div>
-    </div>
-    <div class="phase-body">
-      <p class="section-label">To Do</p>
-      <ul class="do-list">
-        <li>Share <strong>clips &amp; highlights</strong> on X, TikTok, etc.</li>
-        <li>Include the <strong>YouTube URL</strong> in your posts</li>
-        <li>Instead of "please watch," show them <strong>"this moment is amazing"</strong></li>
-        <li>Use tags like <strong>#PRODUCE101JAPAN新世界</strong> to reach beyond Jay's fanbase</li>
-        <li><strong>Screenshot or quote</strong> scenes to spark reactions via replies &amp; QTs</li>
-        <li>Post during peak hours: <strong>8–10 PM</strong></li>
-      </ul>
-      <div class="note-important">YouTube rewards videos that <strong>bring in outside viewers</strong>. SNS traffic is a key trigger for stronger recommendations. Craft captions that make people want to click.</div>
-    </div>
-  </div>
-
-  <div class="phase phase-4">
-    <div class="phase-header">
-      <div class="phase-num">4</div>
-      <div class="phase-title">Sumin Party</div>
-      <div class="phase-timing">Timing matters</div>
-    </div>
-    <div class="phase-body">
-      <div class="two-col">
-        <div>
-          <p class="section-label">When it works</p>
-          <ul class="do-list">
-            <li>Focus it <strong>right after release</strong></li>
-            <li>Actually watch properly (full playback)</li>
-            <li>Comment &amp; like at the same time</li>
-            <li>Right after a re-buzz or related event</li>
-          </ul>
-        </div>
-        <div class="col-divider"></div>
-        <div>
-          <p class="section-label">When it doesn't work</p>
-          <ul class="ng-list">
-            <li>Days after release (outside initial phase)</li>
-            <li>Looping / passive watching</li>
-            <li>Only existing fans participating</li>
-          </ul>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <p class="section-label">Playlist Usage</p>
-      <ul class="do-list">
-        <li>Playlists are great for <strong>background play &amp; extending sessions</strong></li>
-        <li>Use as a <strong>path to continued viewing</strong> after the initial phase</li>
-        <li>Playlist-driven views tend to <strong>extend watch sessions</strong></li>
-      </ul>
-      <div class="note">Playlists aren't ideal for the initial boost, but they're great for building a habit of <strong>background play and rewatching</strong> over time.</div>
-      <div class="divider"></div>
-      <p class="section-label">Replay Intervals</p>
-      <ul class="do-list">
-        <li>Insert <strong>3–4 other videos</strong> between replays</li>
-        <li>Leave a <strong>~10 min gap</strong> between replays</li>
-      </ul>
-      <div class="note">A sumin party is a tool to maximize early momentum. <strong>Concentrating it right after release is key</strong> — simple replay loops days later have little effect.</div>
-    </div>
-  </div>
-
-  <div class="summary">
-    <h3>SUMMARY</h3>
-    <div class="summary-grid">
-      <div class="summary-row"><span class="s-label">Key Metric</span><span class="s-val">Watch Retention</span></div>
-      <div class="summary-row"><span class="s-label">Critical Window</span><span class="s-val">First 24–48h</span></div>
-      <div class="summary-row"><span class="s-label">Spread Key</span><span class="s-val">External traffic (SNS)</span></div>
-      <div class="summary-row"><span class="s-label">Playlists</span><span class="s-val">After initial phase</span></div>
-    </div>
-    <div class="big-point">
-      10 people watching once &nbsp;<span>is stronger than 1 person watching 10 times</span>
-    </div>
-  </div>
-
-  <p class="footer-note">
-    Based on YouTube official sources &amp; Creator Insider.<br>
-    Let's support PRINCE JAY with everything we have 💙
-  </p>
-
 </div>
+```
+
+  </div>
+
+  <!-- Step 2 -->
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Immediately After Release</div>
+        <div class="step-subtitle">0–2 hours ★ Most critical phase</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="phase-badge">⚡ THIS IS THE MOST CRITICAL PHASE</div>
+
+```
+  <section>
+    <div class="checklist-label">What you MUST do (in order)</div>
+    <ul class="checklist">
+      <li>When the notification comes, <strong>click it immediately</strong> and watch without leaving</li>
+      <li>Watch the full video <strong>from start to finish at least once</strong></li>
+      <li>Do not leave early — <strong>the first 30 seconds are especially critical</strong></li>
+      <li><strong>Write a comment in sentences</strong> (specific thoughts are great)</li>
+      <li>Press <strong>Like</strong></li>
+    </ul>
+  </section>
+
+  <div class="important-banner">
+    Clicking from a notification <strong>directly counts toward CTR (click-through rate)</strong> and positively influences YouTube's algorithm. If you missed the notification, <strong>search manually</strong> and play the video.
+  </div>
+
+  <hr class="divider" />
+
+  <section>
+    <div class="ng-label">NG — What NOT to do</div>
+    <ul class="ng-list">
+      <li>Leaving it playing on mute</li>
+      <li>Stopping or leaving mid-video</li>
+      <li>Replaying repeatedly from the same account</li>
+      <li>Simultaneous playback on the same account</li>
+      <li>Background playback / split-screen playback</li>
+      <li>Repeatedly fast-forwarding or pausing</li>
+      <li>Posting comments with only emojis</li>
+    </ul>
+  </section>
+
+  <div class="important-banner">
+    Right after release, YouTube measures <strong>CTR × Watch Retention Rate</strong> to decide whether to spread the video. If these are high, the video gets promoted to the next level.
+  </div>
+
+  <hr class="divider" />
+
+  <section>
+    <div class="checklist-label">FAQ</div>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="q">Can I skip ads?</div>
+        <div><strong>Yes, skipping ads is fine</strong> (no effect on view count). However, <strong>ad blockers are NOT OK</strong> (may prevent views from counting).</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Want to watch again?</div>
+        <div>Watch <strong>3–4 other videos in between and leave at least 10 minutes</strong> before replaying. Always access by <strong>searching manually</strong> each time.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="myth-box">
+    <div class="myth-label">⚠ Common Myths</div>
+    <ul>
+      <li><strong>"Premium accounts are OK for repeat views"</strong> — False (repeated plays are still unlikely to count separately)</li>
+      <li><strong>"Any number of views within 24 hours is fine"</strong> — False (rapid consecutive plays are unlikely to be counted)</li>
+    </ul>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- Step 3 -->
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Spread Phase</div>
+        <div class="step-subtitle">2–48 hours</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <section>
+        <div class="checklist-label">What to do</div>
+        <ul class="checklist">
+          <li>Spread <strong>appealing clips and highlights</strong> on X, TikTok, etc.</li>
+          <li><strong>Attach the YouTube URL</strong> in your posts</li>
+          <li>Instead of "please watch," <strong>show them "this moment is incredible"</strong></li>
+          <li>Use tags like <strong>#PRODUCE101JAPAN新世界</strong> that can reach people beyond JAY's existing fans</li>
+          <li><strong>Screenshot or quote</strong> the FANCAM thumbnail or scenes to prompt reactions through replies or QTs</li>
+          <li>Post during <strong>8–10 PM</strong> when impressions are highest</li>
+        </ul>
+      </section>
+
+```
+  <div class="important-banner">
+    YouTube ranks highly videos that <strong>bring people in from outside</strong>. Inflow from SNS is a trigger for stronger recommendations. Think carefully about captions and titles — make people <em>want</em> to click.
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- Step 4 -->
+
+  <div class="step-card">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Sumin Party</div>
+        <div class="step-subtitle">Timing matters</div>
+      </div>
+    </div>
+    <div class="step-body">
+
+```
+  <div class="two-col">
+    <div class="col-box good">
+      <div class="col-label">✓ Effective conditions</div>
+      <ul class="checklist" style="gap:5px;">
+        <li>Concentrated <strong>right after release</strong></li>
+        <li>Actually watching properly (full playthrough)</li>
+        <li>Combined with comments &amp; likes</li>
+        <li>Timing right after re-buzz or related events</li>
+      </ul>
+    </div>
+    <div class="col-box bad">
+      <div class="col-label">✕ Low-effect situations</div>
+      <ul class="ng-list" style="gap:5px;">
+        <li>Days after release (outside initial-momentum phase)</li>
+        <li>Loop playback / casual background viewing</li>
+        <li>Activity contained only within existing fans</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <section>
+    <div class="checklist-label">Using Playlists</div>
+    <ul class="checklist">
+      <li>Playlists are useful for <strong>background viewing and extending watch sessions</strong></li>
+      <li>Use them as a <strong>pipeline for continued viewing</strong> after the initial-momentum phase has settled</li>
+      <li>Inflow from playlists tends to <strong>extend watch sessions</strong></li>
+    </ul>
+  </section>
+
+  <div class="important-banner">
+    Playlists are not suited for the initial boost right after release, but they help create a flow for <strong>background replays and repeat viewing</strong> after things settle down.
+  </div>
+
+  <hr class="divider" />
+
+  <div class="interval-note">
+    <div class="in-label">Playback Intervals</div>
+    <ul>
+      <li>Insert <strong>3–4 other videos</strong> between each FANCAM watch</li>
+      <li>Leave approximately <strong>10 minutes between plays</strong></li>
+    </ul>
+  </div>
+
+  <div class="important-banner">
+    The Sumin Party is a "machine for maximizing initial momentum." <strong>Concentrating it right after release is key</strong> — simply cycling views days later is far less effective.
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- Summary -->
+
+  <div class="summary-card">
+    <h3>Summary</h3>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="s-label">Most Important Metric</div><div class="s-val">Watch Retention Rate</div></div>
+      <div class="summary-item"><div class="s-label">Critical Window</div><div class="s-val">24–48h after release</div></div>
+      <div class="summary-item"><div class="s-label">Key to Spreading</div><div class="s-val">External inflow (SNS)</div></div>
+      <div class="summary-item"><div class="s-label">Playlists</div><div class="s-val">Effective after initial phase</div></div>
+    </div>
+    <div class="summary-note">10 people watching once &nbsp;›&nbsp; 1 person watching 10 times</div>
+  </div>
+
+</main>
+
+<footer>
+  <p>This guide is based on YouTube's official resources, Creator Insider, and similar sources.</p>
+  <p>Let's cheer on PRINCE JAY with everything we've got 💙</p>
+</footer>
+
 </body>
 </html>
