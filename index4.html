@@ -5,285 +5,242 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ジュアン・ジェイ FD名投票</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:      #0f1b35;
-    --navy-mid:  #172040;
-    --navy-card: #1b2648;
-
-```
-/* メタリックゴールド：光沢感のあるグラデーション */
---gold-grad: linear-gradient(
-  135deg,
-  #8a6a1a 0%,
-  #c9a84c 20%,
-  #f0d878 38%,
-  #e8c840 50%,
-  #f5e080 58%,
-  #c4962a 72%,
-  #e8c840 85%,
-  #9a7520 100%
-);
---gold-solid: #c9a84c;
---gold-light: #f0d878;
---gold-dim:   rgba(201,168,76,0.2);
---on-navy:    #f0e8d4;
---on-gold:    #0f1b35;
-```
-
-}
+    --bg:      #14202E;
+    --card-a:  #1E3957;
+    --card-b:  #2B4257;
+    --gold:    #C9A84C;
+    --gold-dim: rgba(201,168,76,0.3);
+    --text:    #F0E8D4;
+    --text-mid: rgba(240,232,212,0.7);
+    --text-dim: rgba(240,232,212,0.5);
+    --line: 1px;  /* 全ライン幅統一 */
+  }
 
 - { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-background: #0f1b35 !important;
-}
-
-body {
-background: #0f1b35 !important;
-background-color: #0f1b35 !important;
-font-family: ‘Noto Serif JP’, serif;
+html, body {
+background: var(–bg) !important;
 color-scheme: dark;
+font-family: ‘Noto Serif JP’, serif;
 }
 
-/* メタリックゴールドテキスト用 */
-.gold-text {
-background: var(–gold-grad);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-
-/* メタリックゴールド背景用 */
-.gold-bg {
-background: var(–gold-grad);
-position: relative;
-}
-
-/* ══════════════════════════
-GRID
-══════════════════════════ */
-.grid {
-max-width: 1280px;
+.wrapper {
+max-width: 1100px;
 margin: 0 auto;
-padding: 32px 28px 56px;
+padding: 36px 28px 56px;
+}
+
+/* ══ GRID ══ */
+.grid {
 display: grid;
 grid-template-columns: repeat(3, 1fr);
-gap: 14px;
+gap: 12px;
 }
 
-/* ══════════════════════════
-TITLE CELL
-══════════════════════════ */
+/* ══ TITLE CELL ══
+上部を目立たせたい → 二重線で表現 */
 .title-cell {
 grid-column: span 2;
-background: var(–navy-card);
-border: 1px solid rgba(201,168,76,0.35);
+background: var(–card-a);
+border: var(–line) solid var(–gold-dim);
+border-top: none;
 display: flex;
 flex-direction: column;
 justify-content: center;
-padding: 24px 32px;
+padding: 28px 32px;
 position: relative;
-overflow: hidden;
 }
 
-/* 上部メタリックライン */
+/* 上部二重線 */
 .title-cell::before {
 content: ‘’;
 position: absolute;
 top: 0; left: 0; right: 0;
-height: 2px;
-background: var(–gold-grad);
+height: var(–line);
+background: var(–gold);
 }
-
-/* コーナー✦ */
 .title-cell::after {
-content: ‘✦’;
+content: ‘’;
 position: absolute;
-bottom: 12px; right: 14px;
-font-size: 7px;
-background: var(–gold-grad);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+top: 3px; left: 0; right: 0;
+height: var(–line);
+background: var(–gold);
+opacity: 0.4;
 }
 
 .title-label {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 8px;
-letter-spacing: 0.55em;
+font-size: 9px;
+letter-spacing: 0.5em;
 text-transform: uppercase;
-margin-bottom: 8px;
+color: var(–gold);
+margin-bottom: 10px;
 }
 
 .title-main {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(16px, 2vw, 28px);
+font-size: clamp(20px, 2.5vw, 36px);
 font-weight: 600;
-letter-spacing: 0.06em;
-color: var(–on-navy);
+color: var(–text);
 line-height: 1.25;
+letter-spacing: 0.04em;
 }
 
 .title-main em {
 font-style: italic;
-}
-
-.title-deco {
-display: flex;
-align-items: center;
-gap: 10px;
-margin-top: 10px;
-}
-
-.title-deco-line {
-height: 1px;
-width: 32px;
-background: var(–gold-grad);
+color: var(–gold);
 }
 
 .title-sub {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 7.5px;
+font-size: 8.5px;
 letter-spacing: 0.4em;
+color: var(–gold);
 font-style: italic;
+margin-top: 10px;
 }
 
-/* ══════════════════════════
-CARD
-══════════════════════════ */
+.title-divider {
+width: 40px;
+height: var(–line);
+background: var(–gold);
+margin: 10px 0;
+opacity: 0.6;
+}
+
+/* ══ CARD ══ */
 .card {
 display: flex;
-flex-direction: row; /* 左画像・右テキスト */
-border: 1px solid rgba(201,168,76,0.25);
-position: relative;
+flex-direction: column;
+border: var(–line) solid var(–gold-dim);
+border-top: none;
 overflow: hidden;
-min-height: 120px;
+position: relative;
 }
 
-/* navy / gold 交互
-grid子要素: title=1, cards=2〜11 */
-.grid > .card:nth-child(2n)   { background: var(–navy-card); }
-.grid > .card:nth-child(2n+1) { background: var(–navy-card); }
-
-/* 全カードnavyベース、gold版は上部ラインで差別化 */
-.grid > .card:nth-child(even) { background: var(–navy-card); border-color: rgba(201,168,76,0.35); }
-.grid > .card:nth-child(odd)  { background: #111a32; border-color: rgba(201,168,76,0.18); }
-
-/* 上部ライン */
+/* 上部二重線 */
 .card::before {
 content: ‘’;
 position: absolute;
 top: 0; left: 0; right: 0;
-height: 1.5px;
-background: var(–gold-grad);
-opacity: 0.7;
+height: var(–line);
+background: var(–gold);
 z-index: 2;
 }
-
-.grid > .card:nth-child(odd)::before { opacity: 0.35; }
-
-/* 右下✦ */
 .card::after {
-content: ‘✦’;
+content: ‘’;
 position: absolute;
-bottom: 7px; right: 9px;
-font-size: 6px;
-background: var(–gold-grad);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+top: 3px; left: 0; right: 0;
+height: var(–line);
+background: var(–gold);
+opacity: 0.4;
 z-index: 2;
-opacity: 0.7;
 }
 
-/* 画像エリア */
-.card-image-wrap {
-width: 90px;
+.card:nth-child(odd)  { background: var(–card-a); }
+.card:nth-child(even) { background: var(–card-b); }
+
+/* 候補名ヘッダー（上部横断） */
+.card-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 8px 12px 7px;
+border-bottom: var(–line) solid var(–gold-dim);
+flex-shrink: 0;
+gap: 8px;
+}
+
+.card-header-left {
+display: flex;
+align-items: baseline;
+gap: 8px;
+flex: 1;
+min-width: 0;
+}
+
+.card-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 14px;
+font-weight: 600;
+color: var(–text);
+letter-spacing: 0.04em;
+white-space: nowrap;
+line-height: 1.2;
+}
+
+.card-read {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 8px;
+letter-spacing: 0.2em;
+font-style: italic;
+color: var(–gold);
+white-space: nowrap;
+}
+
+.card-header-right {
+display: flex;
+align-items: center;
+gap: 6px;
+flex-shrink: 0;
+}
+
+.card-mark { font-size: 11px; flex-shrink: 0; }
+
+.card-no {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 8px;
+letter-spacing: 0.2em;
+color: var(–gold);
+flex-shrink: 0;
+}
+
+/* 下段：画像＋テキスト横並び */
+.card-lower {
+display: flex;
+flex-direction: row;
+flex: 1;
+min-height: 110px;
+}
+
+/* 画像 */
+.card-img {
+width: 80px;
 flex-shrink: 0;
 position: relative;
 overflow: hidden;
 }
 
-.card-image {
+.card-img img {
 width: 100%;
 height: 100%;
 object-fit: cover;
 display: block;
-filter: saturate(0.78) brightness(0.82);
+filter: saturate(0.75) brightness(0.82);
 }
 
-/* 画像右側フェード */
-.card-image-wrap::after {
+.card-img::after {
 content: ‘’;
 position: absolute;
-inset: 0;
-background: linear-gradient(90deg, transparent 60%, rgba(27,38,72,0.7) 100%);
+top: 0; right: 0;
+width: 20px; height: 100%;
+background: rgba(20,32,46,0.4);
 }
 
-.grid > .card:nth-child(odd) .card-image-wrap::after {
-background: linear-gradient(90deg, transparent 60%, rgba(17,26,50,0.7) 100%);
-}
-
-/* No.バッジ */
-.card-number {
-position: absolute;
-top: 7px; left: 8px;
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 8px;
-letter-spacing: 0.25em;
-padding: 1px 6px;
-z-index: 3;
-background: rgba(15,27,53,0.75);
-border: 1px solid rgba(201,168,76,0.4);
-background: var(–gold-grad);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-
-/* テキストエリア */
+/* テキスト */
 .card-body {
-padding: 8px 10px 8px 10px;
+flex: 1;
+padding: 9px 11px;
 display: flex;
 flex-direction: column;
 justify-content: center;
-gap: 3px;
-flex: 1;
-position: relative;
-}
-
-/* 左側ゴールドライン */
-.card-body::before {
-content: ‘’;
-position: absolute;
-left: 0; top: 12px; bottom: 12px;
-width: 1px;
-background: var(–gold-grad);
-opacity: 0.5;
-}
-
-/* 候補名（1行） */
-.card-name-row {
-display: flex;
-align-items: center;
 gap: 4px;
+border-left: var(–line) solid var(–gold-dim);
 }
 
-.card-name {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 12px;
-font-weight: 600;
-letter-spacing: 0.03em;
-line-height: 1.2;
-color: var(–on-navy);
-white-space: nowrap;
-overflow: hidden;
-text-overflow: clip;
-}
-
-/* 読み＋ファンマーク行 */
 .card-read-row {
 display: flex;
 align-items: center;
@@ -292,245 +249,291 @@ gap: 6px;
 
 .card-read {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 7.5px;
+font-size: 8px;
 letter-spacing: 0.2em;
 font-style: italic;
+color: var(–gold);
 }
 
-.card-mark { font-size: 11px; letter-spacing: 1px; flex-shrink: 0; }
+.card-mark { font-size: 11px; flex-shrink: 0; }
 
-/* 区切り */
 .card-divider {
-height: 1px;
-background: var(–gold-grad);
-opacity: 0.3;
-margin: 1px 0;
+height: var(–line);
+background: var(–gold);
+opacity: 0.2;
+margin: 2px 0;
 }
 
-/* 説明 */
 .card-desc {
-font-size: 8px;
-line-height: 1.75;
+font-size: 8.5px;
+line-height: 1.8;
 font-weight: 300;
-color: rgba(240,232,212,0.72);
+color: var(–text-mid);
 }
 
-/* ══════════════════════════
-FOOTER
-══════════════════════════ */
-footer {
-max-width: 1280px;
-margin: 0 auto;
-padding: 0 28px 36px;
+/* ══ FOOTER ══ */
+.footer {
+margin-top: 28px;
 display: flex;
 align-items: center;
-gap: 16px;
+gap: 14px;
 }
 
-.f-line {
+.footer-line {
 flex: 1;
-height: 1px;
-background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4));
+height: var(–line);
+background: var(–gold);
+opacity: 0.25;
 }
 
-.f-line.right {
-background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent);
-}
-
-.f-text {
+.footer-text {
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 8px;
-letter-spacing: 0.45em;
+letter-spacing: 0.4em;
 font-style: italic;
-background: var(–gold-grad);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+color: var(–gold);
 white-space: nowrap;
 }
 
 @media (max-width: 700px) {
-.grid { grid-template-columns: repeat(2, 1fr); padding: 16px 12px 40px; gap: 10px; }
-.title-cell { grid-column: span 2; padding: 28px 20px; }
-.card-image-wrap { width: 72px; }
-.card-name { font-size: 14px; }
-.card-desc { font-size: 9px; }
+.grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.title-cell { grid-column: span 2; }
+.wrapper { padding: 20px 12px 40px; }
 }
 </style>
 
 </head>
 <body>
-
+<div class="wrapper">
 <div class="grid">
 
-  <!-- タイトルセル -->
+  <!-- TITLE -->
 
   <div class="title-cell">
-    <div class="title-label gold-text">Produce 101 Japan Shinsekai</div>
-    <div class="title-main">ジュアン・ジェイ<br><em class="gold-text">FD名 候補一覧</em></div>
-    <div class="title-deco">
-      <div class="title-deco-line"></div>
-      <div class="title-sub gold-text">Chuang Jay — Fandom Name Vote</div>
-    </div>
+    <div class="title-label">Produce 101 Japan Shinsekai</div>
+    <div class="title-main">ジュアン・ジェイ<br><em>FD名 候補一覧</em></div>
+    <div class="title-divider"></div>
+    <div class="title-sub">Chuang Jay — Fandom Name Vote</div>
   </div>
 
   <!-- No.01 JAYBIRDS -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4464.jpeg" alt="JAYBIRDS">
-      <div class="card-number">No.01</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">JAYBIRDS</span>
+        <span class="card-read">ジェイバーズ</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">💙🪶</span>
+        <span class="card-no">No.01</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">JAYBIRDS</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">ジェイバーズ</div><span class="card-mark">💙🪶</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">JAYBIRDは幸運の青い鳥、カケスを意味する実在する英単語で、名前・航空専攻・軽やかなダンス・台南から飛んできた南の鳥、どれもジェイくん自身と重なる名前。💙はカケス・空・航空を、🪶はジェイくんの軽やかさと自由を表現している。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4464.jpeg" alt="JAYBIRDS"></div>
+      <div class="card-body">
+        <div class="card-desc">JAYBIRDは幸運の青い鳥、カケスを意味する実在する英単語で、名前・航空専攻・軽やかなダンス・台南から飛んできた南の鳥、どれもジェイくん自身と重なる名前。💙はカケス・空・航空を、🪶はジェイくんの軽やかさと自由を表現している。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.02 JAYCE -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4428.jpeg" alt="JAYCE">
-      <div class="card-number">No.02</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">JAYCE</span>
+        <span class="card-read">ジェイス</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">👑💜</span>
+        <span class="card-no">No.02</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">JAYCE</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">ジェイス</div><span class="card-mark">👑💜</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">JAYとACE（最高の存在）を組み合わせた名前。KINGのような王者イメージをコンセプトとしている。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4428.jpeg" alt="JAYCE"></div>
+      <div class="card-body">
+        <div class="card-desc">JAYとACE（最高の存在）を組み合わせた名前。KINGのような王者イメージをコンセプトとしている。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.03 JAY CREW -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4435.jpeg" alt="JAY CREW">
-      <div class="card-number">No.03</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">JAY CREW</span>
+        <span class="card-read">ジェイクルー</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">👩🏻‍✈️💙</span>
+        <span class="card-no">No.03</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">JAY CREW</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">ジェイクルー</div><span class="card-mark">👩🏻‍✈️💙</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">ジェイくんが航空・トランスポート専攻であること、1分PRでもクルーモチーフを採用していたことに由来する名前。ファンもジェイくんの航海をともにサポートする乗務員クルーであるというコンセプト。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4435.jpeg" alt="JAY CREW"></div>
+      <div class="card-body">
+        <div class="card-desc">ジェイくんが航空・トランスポート専攻であること、1分PRでもクルーモチーフを採用していたことに由来する名前。ファンもジェイくんの航海をともにサポートする乗務員クルーであるというコンセプト。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.04 JAYde -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4433.jpeg" alt="JAYde">
-      <div class="card-number">No.04</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">JAYde</span>
+        <span class="card-read">ジェイド</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">💎👑</span>
+        <span class="card-no">No.04</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">JAYde</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">ジェイド</div><span class="card-mark">💎👑</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">台湾の代表的名産品の翡翠を意味するjadeにジェイくんの名前を宿した造語。deは「〜の(もの)」を意味し、ジェイくんのファンであることを表す。翡翠の透明感と宝石のような美しいビジュアルと高身長プリンスを表現。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4433.jpeg" alt="JAYde"></div>
+      <div class="card-body">
+        <div class="card-desc">台湾の代表的名産品の翡翠を意味するjadeにジェイくんの名前を宿した造語。deは「〜の(もの)」を意味し、ジェイくんのファンであることを表す。翡翠の透明感と宝石のような美しいビジュアルと高身長プリンスを表現。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.05 JAYL -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4431.jpeg" alt="JAYL">
-      <div class="card-number">No.05</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">JAYL</span>
+        <span class="card-read">ジェイル</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">🍬</span>
+        <span class="card-no">No.05</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">JAYL</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">ジェイル</div><span class="card-mark">🍬</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">JAYとLoyal（忠実な）、Loveを組み合わせた名前。推しカメラで知人らしき方が「砂糖よりも甘く、見る人の心を溶かしてしまう」と表現したジェイくんの笑顔をコンセプトとしている。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4431.jpeg" alt="JAYL"></div>
+      <div class="card-body">
+        <div class="card-desc">JAYとLoyal（忠実な）、Loveを組み合わせた名前。推しカメラで知人らしき方が「砂糖よりも甘く、見る人の心を溶かしてしまう」と表現したジェイくんの笑顔をコンセプトとしている。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.06 JAYLAND -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4427.jpeg" alt="JAYLAND">
-      <div class="card-number">No.06</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">JAYLAND</span>
+        <span class="card-read">ジェイランド</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">🦋💜</span>
+        <span class="card-no">No.06</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">JAYLAND</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">ジェイランド</div><span class="card-mark">🦋💜</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">JAYと台湾（Island）を組み合わせた名前。蝶の国として有名な台湾の美しい雰囲気がジェイくんの世界観と重なることから、蝶と紫でファンマークを表現している。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4427.jpeg" alt="JAYLAND"></div>
+      <div class="card-body">
+        <div class="card-desc">JAYと台湾（Island）を組み合わせた名前。蝶の国として有名な台湾の美しい雰囲気がジェイくんの世界観と重なることから、蝶と紫でファンマークを表現している。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.07 JAYWINDS -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4466.jpeg" alt="JAYWINDS">
-      <div class="card-number">No.07</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">JAYWINDS</span>
+        <span class="card-read">ジェイウィンズ</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">❤️‍🔥🌬️💨</span>
+        <span class="card-no">No.07</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">JAYWINDS</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">ジェイウィンズ</div><span class="card-mark">❤️‍🔥🌬️💨</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">ジェイくんへの追い風・公式キャッチコピーの南風・勝利（WIN）という三つの意味を重ねた名前。ファンダム自身がジェイくんの追い風となり、勝利への熱量を持って応援するという想いを表現している。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4466.jpeg" alt="JAYWINDS"></div>
+      <div class="card-body">
+        <div class="card-desc">ジェイくんへの追い風・公式キャッチコピーの南風・勝利（WIN）という三つの意味を重ねた名前。ファンダム自身がジェイくんの追い風となり、勝利への熱量を持って応援するという想いを表現している。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.08 Pines -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4438.jpeg" alt="Pines">
-      <div class="card-number">No.08</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">Pines</span>
+        <span class="card-read">パインズ</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">🍍💛</span>
+        <span class="card-no">No.08</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">Pines</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">パインズ</div><span class="card-mark">🍍💛</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">ジェイくんの出身地・台南を代表する特産品であるパイナップル（Pine）に由来する名前。同じ台湾出身の他トレーニーとも被らない、台南ならではの名前となっている。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4438.jpeg" alt="Pines"></div>
+      <div class="card-body">
+        <div class="card-desc">ジェイくんの出身地・台南を代表する特産品であるパイナップル（Pine）に由来する名前。同じ台湾出身の他トレーニーとも被らない、台南ならではの名前となっている。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.09 じぇい莊 -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4465.jpeg" alt="じぇい莊">
-      <div class="card-number">No.09</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">じぇい莊</span>
+        <span class="card-read">JAY莊 / ジェイ莊</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">🛩️💛</span>
+        <span class="card-no">No.09</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">じぇい莊</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">JAY莊 / ジェイ莊</div><span class="card-mark">🛩️💛</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">ジェイくんの苗字「莊」と椿山「荘」のような日本の用法とかけている。ジェイくんの名前と苗字を印象づけ、差別化とFD内の一体感を表現。🛩️は双子の弟がジェイくんを表す絵文字で、「傑出」を意味する「傑」の字から黄色とした。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4465.jpeg" alt="じぇい莊"></div>
+      <div class="card-body">
+        <div class="card-desc">ジェイくんの苗字「莊」と椿山「荘」のような日本の用法とかけている。ジェイくんの名前と苗字を印象づけ、差別化とFD内の一体感を表現。🛩️は双子の弟がジェイくんを表す絵文字で、「傑出」を意味する「傑」の字から黄色とした。</div>
+      </div>
     </div>
   </div>
 
   <!-- No.10 ふぇいじーず -->
 
   <div class="card">
-    <div class="card-image-wrap">
-      <img class="card-image" src="IMG_4463.jpeg" alt="ふぇいじーず">
-      <div class="card-number">No.10</div>
+    <div class="card-header">
+      <div class="card-header-left">
+        <span class="card-name">ふぇいじーず</span>
+        <span class="card-read">フェイジーズ</span>
+      </div>
+      <div class="card-header-right">
+        <span class="card-mark">🦅💙</span>
+        <span class="card-no">No.10</span>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="card-name-row"><span class="card-name">ふぇいじーず</span></div>
-      <div class="card-read-row"><div class="card-read gold-text">フェイジーズ</div><span class="card-mark">🦅💙</span></div>
-      <div class="card-divider"></div>
-      <div class="card-desc">台湾で飛行機を意味するフェイジー（飛機）に由来する名前。鷲は鳥の王者としてプリンスのイメージに合うロイヤルなモチーフ。鷹として捉えると飛行機の愛称にも用いられることから、ジェイくんの航空専攻ともリンクしている。</div>
+    <div class="card-lower">
+      <div class="card-img"><img src="IMG_4463.jpeg" alt="ふぇいじーず"></div>
+      <div class="card-body">
+        <div class="card-desc">台湾で飛行機を意味するフェイジー（飛機）に由来する名前。鷲は鳥の王者としてプリンスのイメージに合うロイヤルなモチーフ。鷹として捉えると飛行機の愛称にも用いられることから、ジェイくんの航空専攻ともリンクしている。</div>
+      </div>
     </div>
   </div>
 
 </div>
 
-<footer>
-  <div class="f-line"></div>
-  <div class="f-text">✦ Chuang Jay — Produce 101 Japan Shinsekai — Fandom Name Vote ✦</div>
-  <div class="f-line right"></div>
-</footer>
+<div class="footer">
+  <div class="footer-line"></div>
+  <div class="footer-text">✦ Chuang Jay — Produce 101 Japan Shinsekai — Fandom Name Vote ✦</div>
+  <div class="footer-line"></div>
+</div>
 
+</div>
 </body>
 </html>
