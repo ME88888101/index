@@ -1,193 +1,530 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fancam Play Guide</title>
+<title>ジュアン・ジェイ FD名投票</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 <style>
-body { background: #000; color: #e8e8f0; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; padding: 24px 16px 60px; margin: 0; }
-.wrap { max-width: 800px; margin: 0 auto; }
+  :root {
+    --navy:      #0f1b35;
+    --navy-mid:  #172040;
+    --navy-card: #1b2648;
 
-.header { background: linear-gradient(160deg, #000 0%, #0a1a3a 50%, #0a84ff 100%); border-radius: 8px; padding: 32px 24px; text-align: center; margin-bottom: 20px; }
-.header .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 4px; color: #64d2ff; border: 1px solid rgba(100,210,255,0.4); padding: 3px 14px; margin-bottom: 14px; }
-.header h1 { font-size: 42px; font-weight: 900; color: #fff; margin: 0 0 8px; letter-spacing: 2px; }
-.header h1 span { color: #64d2ff; }
-.stripe { height: 3px; background: linear-gradient(90deg, #000, #0a84ff, #64d2ff, #0a84ff, #000); margin-bottom: 20px; }
+```
+/* メタリックゴールド：光沢感のあるグラデーション */
+--gold-grad: linear-gradient(
+  135deg,
+  #8a6a1a 0%,
+  #c9a84c 20%,
+  #f0d878 38%,
+  #e8c840 50%,
+  #f5e080 58%,
+  #c4962a 72%,
+  #e8c840 85%,
+  #9a7520 100%
+);
+--gold-solid: #c9a84c;
+--gold-light: #f0d878;
+--gold-dim:   rgba(201,168,76,0.2);
+--on-navy:    #f0e8d4;
+--on-gold:    #0f1b35;
+```
 
-.insight { background: #1c1c1e; border: 1px solid #38383a; border-left: 3px solid #0a84ff; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 15px; font-weight: 900; color: #fff; text-align: center; }
-.insight span { color: #64d2ff; }
+}
 
-.phase { background: #1c1c1e; border: 1px solid #38383a; border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
-.phase-1 { border-left: 3px solid #0a84ff; }
-.phase-2 { border-left: 3px solid #64d2ff; }
-.phase-3 { border-left: 3px solid #3a3a3c; }
+- { margin: 0; padding: 0; box-sizing: border-box; }
 
-.ph { display: flex; align-items: stretch; border-bottom: 1px solid #38383a; }
-.pn { width: 52px; min-height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0; }
-.phase-1 .pn { background: rgba(10,132,255,0.15); color: #409cff; }
-.phase-2 .pn { background: rgba(10,132,255,0.1); color: #64d2ff; }
-.phase-3 .pn { background: rgba(100,210,255,0.08); color: #64d2ff; }
-.pt { font-size: 15px; font-weight: 700; padding: 0 14px; display: flex; align-items: center; color: #e8e8f0; }
-.ptm { margin-left: auto; font-size: 10px; font-weight: 700; padding: 0 12px; border-left: 1px solid #38383a; display: flex; align-items: center; color: rgba(235,235,245,0.4); white-space: nowrap; }
-.pb { padding: 18px 20px; }
+body {
+background: var(–navy);
+font-family: ‘Noto Serif JP’, serif;
+}
 
-.two { display: grid; grid-template-columns: 2fr 1px 1fr; gap: 0 16px; }
-.div-line { background: #38383a; }
+/* メタリックゴールドテキスト用 */
+.gold-text {
+background: var(–gold-grad);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
 
-.lbl { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(235,235,245,0.4); margin-bottom: 8px; margin-top: 14px; }
-.lbl:first-child { margin-top: 0; }
+/* メタリックゴールド背景用 */
+.gold-bg {
+background: var(–gold-grad);
+position: relative;
+}
 
-ul.do, ul.ng { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-ul.do li, ul.ng li { display: flex; gap: 8px; font-size: 13px; line-height: 1.6; color: rgba(235,235,245,0.65); align-items: flex-start; }
-ul.do li strong, ul.ng li strong { color: #e8e8f0; }
-ul.do li::before { content: ‘✓’; color: #30d158; font-weight: 900; font-size: 11px; flex-shrink: 0; margin-top: 2px; }
-ul.ng li::before { content: ‘✕’; color: #ff453a; font-weight: 900; font-size: 11px; flex-shrink: 0; margin-top: 2px; }
+/* ══════════════════════════
+GRID
+══════════════════════════ */
+.grid {
+max-width: 1280px;
+margin: 0 auto;
+padding: 32px 28px 56px;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 14px;
+}
 
-.badge { display: block; background: rgba(255,69,58,0.12); color: #ff453a; border: 1px solid rgba(255,69,58,0.4); font-size: 13px; font-weight: 700; padding: 8px; margin-bottom: 14px; border-radius: 6px; text-align: center; }
+/* ══════════════════════════
+TITLE CELL
+══════════════════════════ */
+.title-cell {
+grid-column: span 2;
+background: var(–navy-card);
+border: 1px solid rgba(201,168,76,0.35);
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 24px 32px;
+position: relative;
+overflow: hidden;
+}
 
-.ni { background: rgba(10,132,255,0.07); border: 1px solid rgba(10,132,255,0.25); border-left: 3px solid #0a84ff; padding: 11px 14px; font-size: 12px; color: rgba(235,235,245,0.65); line-height: 1.8; margin-top: 10px; border-radius: 0 7px 7px 0; }
-.ni strong { color: #fff; }
+/* 上部メタリックライン */
+.title-cell::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+background: var(–gold-grad);
+}
 
-.settings { border: 1px solid #38383a; border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
-.sr { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid #38383a; font-size: 12px; background: #1c1c1e; }
-.sr:nth-child(even) { background: #242426; }
-.sr:last-child { border-bottom: none; }
-.sk { color: rgba(235,235,245,0.6); }
-.sv { font-weight: 700; font-size: 10px; letter-spacing: 1px; padding: 2px 10px; border-radius: 20px; }
-.on { background: rgba(48,209,88,0.15); color: #30d158; }
-.off { background: rgba(255,69,58,0.15); color: #ff453a; }
-.jp { background: rgba(10,132,255,0.15); color: #409cff; }
-.std { background: rgba(235,235,245,0.08); color: rgba(235,235,245,0.6); }
+/* コーナー✦ */
+.title-cell::after {
+content: ‘✦’;
+position: absolute;
+bottom: 12px; right: 14px;
+font-size: 7px;
+background: var(–gold-grad);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
 
-.faq { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-.faq li { background: #242426; border: 1px solid #38383a; padding: 8px 12px; font-size: 12px; color: rgba(235,235,245,0.6); line-height: 1.7; border-radius: 7px; display: flex; gap: 8px; }
-.faq li .q { color: #409cff; font-weight: 700; flex-shrink: 0; }
-.faq li strong { color: #e8e8f0; }
+.title-label {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 8px;
+letter-spacing: 0.55em;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
 
-.div { height: 1px; background: #38383a; margin: 12px 0; }
+.title-main {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(16px, 2vw, 28px);
+font-weight: 600;
+letter-spacing: 0.06em;
+color: var(–on-navy);
+line-height: 1.25;
+}
 
-.footer { text-align: center; font-size: 11px; color: #409cff; margin-top: 24px; line-height: 1.8; }
+.title-main em {
+font-style: italic;
+}
+
+.title-deco {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-top: 10px;
+}
+
+.title-deco-line {
+height: 1px;
+width: 32px;
+background: var(–gold-grad);
+}
+
+.title-sub {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 7.5px;
+letter-spacing: 0.4em;
+font-style: italic;
+}
+
+/* ══════════════════════════
+CARD
+══════════════════════════ */
+.card {
+display: flex;
+flex-direction: row; /* 左画像・右テキスト */
+border: 1px solid rgba(201,168,76,0.25);
+position: relative;
+overflow: hidden;
+min-height: 120px;
+}
+
+/* navy / gold 交互
+grid子要素: title=1, cards=2〜11 */
+.grid > .card:nth-child(2n)   { background: var(–navy-card); }
+.grid > .card:nth-child(2n+1) { background: var(–navy-card); }
+
+/* 全カードnavyベース、gold版は上部ラインで差別化 */
+.grid > .card:nth-child(even) { background: var(–navy-card); border-color: rgba(201,168,76,0.35); }
+.grid > .card:nth-child(odd)  { background: #111a32; border-color: rgba(201,168,76,0.18); }
+
+/* 上部ライン */
+.card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 1.5px;
+background: var(–gold-grad);
+opacity: 0.7;
+z-index: 2;
+}
+
+.grid > .card:nth-child(odd)::before { opacity: 0.35; }
+
+/* 右下✦ */
+.card::after {
+content: ‘✦’;
+position: absolute;
+bottom: 7px; right: 9px;
+font-size: 6px;
+background: var(–gold-grad);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+z-index: 2;
+opacity: 0.7;
+}
+
+/* 画像エリア */
+.card-image-wrap {
+width: 90px;
+flex-shrink: 0;
+position: relative;
+overflow: hidden;
+}
+
+.card-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+filter: saturate(0.78) brightness(0.82);
+}
+
+/* 画像右側フェード */
+.card-image-wrap::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(90deg, transparent 60%, rgba(27,38,72,0.7) 100%);
+}
+
+.grid > .card:nth-child(odd) .card-image-wrap::after {
+background: linear-gradient(90deg, transparent 60%, rgba(17,26,50,0.7) 100%);
+}
+
+/* No.バッジ */
+.card-number {
+position: absolute;
+top: 7px; left: 8px;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 8px;
+letter-spacing: 0.25em;
+padding: 1px 6px;
+z-index: 3;
+background: rgba(15,27,53,0.75);
+border: 1px solid rgba(201,168,76,0.4);
+background: var(–gold-grad);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+/* テキストエリア */
+.card-body {
+padding: 8px 10px 8px 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 3px;
+flex: 1;
+position: relative;
+}
+
+/* 左側ゴールドライン */
+.card-body::before {
+content: ‘’;
+position: absolute;
+left: 0; top: 12px; bottom: 12px;
+width: 1px;
+background: var(–gold-grad);
+opacity: 0.5;
+}
+
+/* 候補名（1行） */
+.card-name-row {
+display: flex;
+align-items: center;
+gap: 4px;
+}
+
+.card-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 12px;
+font-weight: 600;
+letter-spacing: 0.03em;
+line-height: 1.2;
+color: var(–on-navy);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: clip;
+}
+
+/* 読み＋ファンマーク行 */
+.card-read-row {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.card-read {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 7.5px;
+letter-spacing: 0.2em;
+font-style: italic;
+}
+
+.card-mark { font-size: 11px; letter-spacing: 1px; flex-shrink: 0; }
+
+/* 区切り */
+.card-divider {
+height: 1px;
+background: var(–gold-grad);
+opacity: 0.3;
+margin: 1px 0;
+}
+
+/* 説明 */
+.card-desc {
+font-size: 8px;
+line-height: 1.75;
+font-weight: 300;
+color: rgba(240,232,212,0.72);
+}
+
+/* ══════════════════════════
+FOOTER
+══════════════════════════ */
+footer {
+max-width: 1280px;
+margin: 0 auto;
+padding: 0 28px 36px;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.f-line {
+flex: 1;
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4));
+}
+
+.f-line.right {
+background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent);
+}
+
+.f-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 8px;
+letter-spacing: 0.45em;
+font-style: italic;
+background: var(–gold-grad);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+.grid { grid-template-columns: repeat(2, 1fr); padding: 16px 12px 40px; gap: 10px; }
+.title-cell { grid-column: span 2; padding: 28px 20px; }
+.card-image-wrap { width: 72px; }
+.card-name { font-size: 14px; }
+.card-desc { font-size: 9px; }
+}
 </style>
 
 </head>
 <body>
-<div class="wrap">
 
-<div class="header">
-  <div class="tag">CHUANGJAY — SUMIN GUIDE</div>
-  <h1>Fancam <span>Play Guide</span></h1>
-</div>
-<div class="stripe"></div>
+<div class="grid">
 
-<div class="insight">
-  The battle is won within <span>24–48 hrs of release</span> ‼️
-</div>
+  <!-- タイトルセル -->
 
-<div class="phase phase-1">
-  <div class="ph">
-    <div class="pn">1</div>
-    <div class="pt">Before Release</div>
-    <div class="ptm">Before release</div>
-  </div>
-  <div class="pb">
-    <div class="two">
-      <div>
-        <p class="lbl">To Do</p>
-        <ul class="do">
-          <li><strong>Log in</strong> to YouTube</li>
-          <li>Turn on <strong>notifications</strong> for the official channel</li>
-          <li><strong>Check &amp; share</strong> the release time in advance</li>
-        </ul>
-        <p class="lbl">NG</p>
-        <ul class="ng">
-          <li>No VPN</li>
-        </ul>
-      </div>
-      <div class="div-line"></div>
-      <div>
-        <p class="lbl">YouTube Settings</p>
-        <div class="settings">
-          <div class="sr"><span class="sk">Country / Region</span><span class="sv jp">Japan</span></div>
-          <div class="sr"><span class="sk">Autoplay</span><span class="sv off">Off</span></div>
-          <div class="sr"><span class="sk">Stats for nerds</span><span class="sv on">On</span></div>
-          <div class="sr"><span class="sk">Quality</span><span class="sv std">720p+</span></div>
-          <div class="sr"><span class="sk">Speed</span><span class="sv std">Normal (1.0x)</span></div>
-        </div>
-      </div>
+  <div class="title-cell">
+    <div class="title-label gold-text">Produce 101 Japan Shinsekai</div>
+    <div class="title-main">ジュアン・ジェイ<br><em class="gold-text">FD名 候補一覧</em></div>
+    <div class="title-deco">
+      <div class="title-deco-line"></div>
+      <div class="title-sub gold-text">Chuang Jay — Fandom Name Vote</div>
     </div>
   </div>
-</div>
 
-<div class="phase phase-2">
-  <div class="ph">
-    <div class="pn">2</div>
-    <div class="pt">Right After Release</div>
-    <div class="ptm">0–2 hrs ★Most Critical</div>
-  </div>
-  <div class="pb">
-    <div class="badge">⚡ This is the most critical phase</div>
-    <div class="two">
-      <div>
-        <p class="lbl">Must Do</p>
-        <ul class="do">
-          <li><strong>Click immediately</strong> from the notification and watch</li>
-          <li>Watch the <strong>full video</strong> (first 30 sec are critical)</li>
-          <li>Leave a <strong>text comment</strong></li>
-          <li>Press <strong>Like</strong></li>
-        </ul>
-      </div>
-      <div class="div-line"></div>
-      <div>
-        <p class="lbl">NG</p>
-        <ul class="ng">
-          <li>Muted &amp; idle / Stopping midway</li>
-          <li>Looping same account / multi-device</li>
-          <li>Background / split screen / fast forward</li>
-          <li>Emoji-only comments</li>
-        </ul>
-      </div>
+  <!-- No.01 JAYBIRDS -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4464.jpeg" alt="JAYBIRDS">
+      <div class="card-number">No.01</div>
     </div>
-    <div class="ni">Clicking the notification boosts the algorithm. If you missed it, please <strong>search manually</strong> and play.</div>
-    <div class="div"></div>
-    <p class="lbl">FAQ</p>
-    <ul class="faq">
-      <li><span class="q">Q</span><span>Ads? → <strong>Skip is fine.</strong> Ad blockers are NG</span></li>
-      <li><span class="q">Q</span><span>Want to rewatch? → <strong>Watch 3–4 other videos first, wait 10+ min</strong> → Always <strong>search manually</strong> each time</span></li>
-    </ul>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">JAYBIRDS</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">ジェイバーズ</div><span class="card-mark">💙🪶</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">JAYBIRDは幸運の青い鳥、カケスを意味する実在する英単語で、名前・航空専攻・軽やかなダンス・台南から飛んできた南の鳥、どれもジェイくん自身と重なる名前。💙はカケス・空・航空を、🪶はジェイくんの軽やかさと自由を表現している。</div>
+    </div>
   </div>
+
+  <!-- No.02 JAYCE -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4428.jpeg" alt="JAYCE">
+      <div class="card-number">No.02</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">JAYCE</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">ジェイス</div><span class="card-mark">👑💜</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">JAYとACE（最高の存在）を組み合わせた名前。KINGのような王者イメージをコンセプトとしている。</div>
+    </div>
+  </div>
+
+  <!-- No.03 JAY CREW -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4435.jpeg" alt="JAY CREW">
+      <div class="card-number">No.03</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">JAY CREW</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">ジェイクルー</div><span class="card-mark">👩🏻‍✈️💙</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">ジェイくんが航空・トランスポート専攻であること、1分PRでもクルーモチーフを採用していたことに由来する名前。ファンもジェイくんの航海をともにサポートする乗務員クルーであるというコンセプト。</div>
+    </div>
+  </div>
+
+  <!-- No.04 JAYde -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4433.jpeg" alt="JAYde">
+      <div class="card-number">No.04</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">JAYde</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">ジェイド</div><span class="card-mark">💎👑</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">台湾の代表的名産品の翡翠を意味するjadeにジェイくんの名前を宿した造語。deは「〜の(もの)」を意味し、ジェイくんのファンであることを表す。翡翠の透明感と宝石のような美しいビジュアルと高身長プリンスを表現。</div>
+    </div>
+  </div>
+
+  <!-- No.05 JAYL -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4431.jpeg" alt="JAYL">
+      <div class="card-number">No.05</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">JAYL</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">ジェイル</div><span class="card-mark">🍬</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">JAYとLoyal（忠実な）、Loveを組み合わせた名前。推しカメラで知人らしき方が「砂糖よりも甘く、見る人の心を溶かしてしまう」と表現したジェイくんの笑顔をコンセプトとしている。</div>
+    </div>
+  </div>
+
+  <!-- No.06 JAYLAND -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4427.jpeg" alt="JAYLAND">
+      <div class="card-number">No.06</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">JAYLAND</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">ジェイランド</div><span class="card-mark">🦋💜</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">JAYと台湾（Island）を組み合わせた名前。蝶の国として有名な台湾の美しい雰囲気がジェイくんの世界観と重なることから、蝶と紫でファンマークを表現している。</div>
+    </div>
+  </div>
+
+  <!-- No.07 JAYWINDS -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4466.jpeg" alt="JAYWINDS">
+      <div class="card-number">No.07</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">JAYWINDS</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">ジェイウィンズ</div><span class="card-mark">❤️‍🔥🌬️💨</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">ジェイくんへの追い風・公式キャッチコピーの南風・勝利（WIN）という三つの意味を重ねた名前。ファンダム自身がジェイくんの追い風となり、勝利への熱量を持って応援するという想いを表現している。</div>
+    </div>
+  </div>
+
+  <!-- No.08 Pines -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4438.jpeg" alt="Pines">
+      <div class="card-number">No.08</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">Pines</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">パインズ</div><span class="card-mark">🍍💛</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">ジェイくんの出身地・台南を代表する特産品であるパイナップル（Pine）に由来する名前。同じ台湾出身の他トレーニーとも被らない、台南ならではの名前となっている。</div>
+    </div>
+  </div>
+
+  <!-- No.09 じぇい莊 -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4465.jpeg" alt="じぇい莊">
+      <div class="card-number">No.09</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">じぇい莊</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">JAY莊 / ジェイ莊</div><span class="card-mark">🛩️💛</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">ジェイくんの苗字「莊」と椿山「荘」のような日本の用法とかけている。ジェイくんの名前と苗字を印象づけ、差別化とFD内の一体感を表現。🛩️は双子の弟がジェイくんを表す絵文字で、「傑出」を意味する「傑」の字から黄色とした。</div>
+    </div>
+  </div>
+
+  <!-- No.10 ふぇいじーず -->
+
+  <div class="card">
+    <div class="card-image-wrap">
+      <img class="card-image" src="IMG_4463.jpeg" alt="ふぇいじーず">
+      <div class="card-number">No.10</div>
+    </div>
+    <div class="card-body">
+      <div class="card-name-row"><span class="card-name">ふぇいじーず</span></div>
+      <div class="card-read-row"><div class="card-read gold-text">フェイジーズ</div><span class="card-mark">🦅💙</span></div>
+      <div class="card-divider"></div>
+      <div class="card-desc">台湾で飛行機を意味するフェイジー（飛機）に由来する名前。鷲は鳥の王者としてプリンスのイメージに合うロイヤルなモチーフ。鷹として捉えると飛行機の愛称にも用いられることから、ジェイくんの航空専攻ともリンクしている。</div>
+    </div>
+  </div>
+
 </div>
 
-<div class="phase phase-3">
-  <div class="ph">
-    <div class="pn">3</div>
-    <div class="pt">Spread &amp; Playlists</div>
-    <div class="ptm">2–48 hrs</div>
-  </div>
-  <div class="pb">
-    <p class="lbl">Spread</p>
-    <ul class="do">
-      <li>Share <strong>clips &amp; highlights</strong> on X / TikTok</li>
-      <li>Include the <strong>YouTube URL</strong> in your posts</li>
-      <li>Instead of "please watch," show them <strong>"this moment is amazing"</strong></li>
-      <li>Use tags like <strong>#PRODUCE101JAPAN新世界</strong> to reach beyond Jay's fanbase</li>
-      <li><strong>Screenshot or quote</strong> scenes to spark reactions via replies &amp; QTs</li>
-      <li>Post during peak hours: <strong>8–10 PM</strong></li>
-    </ul>
-    <div class="div"></div>
-    <p class="lbl">Playlists</p>
-    <ul class="do">
-      <li>Use for <strong>background play &amp; rewatching</strong> after the initial boost</li>
-      <li>When rewatching, <strong>watch 3–4 other videos first and wait 10+ min</strong></li>
-    </ul>
-  </div>
-</div>
+<footer>
+  <div class="f-line"></div>
+  <div class="f-text">✦ Chuang Jay — Produce 101 Japan Shinsekai — Fandom Name Vote ✦</div>
+  <div class="f-line right"></div>
+</footer>
 
-<p class="footer">
-  Based on YouTube official sources &amp; Creator Insider.<br>
-  Let's support PRINCE JAY with everything we have 💙
-</p>
-
-</div>
 </body>
 </html>
