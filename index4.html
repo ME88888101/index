@@ -4,485 +4,545 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>タグイベ説明書 #JustVoteJay</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<title>スミンパーティーガイド — JAYBIRDS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #1a2235;
-    --navy-mid: #243049;
-    --gold: #c9a84c;
-    --gold-light: #e2c97e;
-    --gold-pale: #f5ecd4;
-    --white: #fdfbf7;
-    --text: #2a2a2a;
-    --text-light: #5a5a6a;
-  }
+:root {
+  --bg:       #0b1520;
+  --bg2:      #0f1d2e;
+  --card:     #111e30;
+  --card2:    #0d1825;
+  --gold:     #c9a84c;
+  --gold-l:   #e8cb7a;
+  --gold-d:   #7a6030;
+  --gold-dim: rgba(201,168,76,0.15);
+  --accent:   #4a8fc4;
+  --white:    #f0ebe0;
+  --text:     #cdc6b8;
+  --text-d:   #7a7060;
+  --lav:      #9a90b8;
+  --pink:     #b87880;
+  --green:    #6a9e78;
+  --border:   rgba(201,168,76,0.2);
+}
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body {
-background: var(–navy);
-color: var(–white);
-font-family: ‘Noto Serif JP’, serif;
+background: var(–bg);
+color: var(–text);
+font-family: ‘Noto Sans JP’, sans-serif;
 font-weight: 300;
-line-height: 1.8;
-min-height: 100vh;
-min-width: 720px;
+font-size: 14px;
+line-height: 1.7;
 }
 
-/* ── 星装飾 SVG ── */
-.star {
-display: inline-block;
-width: 1em;
-height: 1em;
-vertical-align: middle;
-}
-.star svg { width: 100%; height: 100%; }
-
-/* ── ヘッダー ── */
-.header {
-width: 720px;
-margin: 0 auto;
+/* ── HERO ── */
+.hero {
+background: linear-gradient(180deg, #060e18 0%, #0b1a2c 60%, #0f1d2e 100%);
 text-align: center;
-padding: 56px 24px 40px;
+padding: 52px 24px 48px;
 position: relative;
+overflow: hidden;
 }
-.header::after {
-content: ‘’;
-display: block;
-width: 120px;
-height: 1px;
-background: var(–gold);
-margin: 20px auto 0;
-opacity: 0.6;
+.hero::before {
+content:’’;
+position:absolute;inset:0;
+background-image:
+radial-gradient(1.5px 1.5px at 10% 20%, rgba(201,168,76,.6) 0%,transparent 100%),
+radial-gradient(1px 1px at 85% 12%, rgba(255,255,255,.4) 0%,transparent 100%),
+radial-gradient(2px 2px at 35% 8%, rgba(201,168,76,.5) 0%,transparent 100%),
+radial-gradient(1px 1px at 60% 30%, rgba(255,255,255,.3) 0%,transparent 100%),
+radial-gradient(1px 1px at 20% 55%, rgba(201,168,76,.35) 0%,transparent 100%),
+radial-gradient(1.5px 1.5px at 90% 45%, rgba(255,255,255,.3) 0%,transparent 100%),
+radial-gradient(1px 1px at 50% 70%, rgba(201,168,76,.3) 0%,transparent 100%),
+radial-gradient(1px 1px at 75% 80%, rgba(255,255,255,.2) 0%,transparent 100%),
+radial-gradient(1.5px 1.5px at 45% 40%, rgba(154,144,184,.35) 0%,transparent 100%);
+pointer-events:none;
 }
-.header-label {
+.hero-eyebrow {
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 11px;
-letter-spacing: 0.35em;
-color: var(–gold);
+letter-spacing: .45em;
+color: var(–gold-d);
 text-transform: uppercase;
-margin-bottom: 16px;
-}
-.header-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 17px;
-font-weight: 400;
-color: var(–gold-light);
-line-height: 1.3;
-letter-spacing: 0.25em;
-text-transform: uppercase;
-}
-.header-inline {
-display: flex;
-align-items: baseline;
-justify-content: center;
-gap: 16px;
-margin-top: 10px;
-flex-wrap: nowrap;
-}
-.header-tag-inline {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 27px;
-color: #d45c5c;
-font-style: italic;
-letter-spacing: 0.02em;
-}
-.header-sub {
-font-size: 27px;
-color: #d45c5c;
-letter-spacing: 0.1em;
-font-family: ‘Cormorant Garamond’, serif;
-font-weight: 600;
-}
-
-/* ── ダブルボーダーカード ── */
-.container {
-width: 720px;
-margin: 0 auto;
-padding: 0 20px 60px;
-}
-
-.card {
-background: var(–navy-mid);
-border: 1px solid rgba(201,168,76,0.35);
-box-shadow: inset 0 0 0 4px var(–navy-mid), inset 0 0 0 5px rgba(201,168,76,0.2);
-border-radius: 2px;
-padding: 32px 28px;
 margin-bottom: 20px;
 position: relative;
 }
-
-.card-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 14px;
-font-weight: 600;
-color: var(–gold-light);
-letter-spacing: 0.08em;
-margin-bottom: 14px;
-display: flex;
-align-items: center;
-gap: 8px;
-}
-
-/* ── タイムライン ── */
-.timeline {
-display: flex;
-flex-direction: column;
-gap: 0;
-}
-.tl-item {
-display: grid;
-grid-template-columns: 90px 1fr;
-gap: 0 16px;
-position: relative;
-padding-bottom: 20px;
-}
-.tl-item:last-child { padding-bottom: 0; }
-.tl-item::before {
-content: ‘’;
-position: absolute;
-left: 89px;
-top: 24px;
-bottom: 0;
-width: 1px;
-background: rgba(201,168,76,0.2);
-}
-.tl-item:last-child::before { display: none; }
-.tl-time {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 11px;
-color: var(–gold);
-font-weight: 500;
-letter-spacing: 0.05em;
-padding-top: 2px;
-text-align: right;
-}
-.tl-dot {
-position: absolute;
-left: 83px;
-top: 6px;
-width: 13px;
-height: 13px;
-}
-.tl-dot svg { width: 100%; height: 100%; }
-.tl-body { padding-left: 14px; }
-.tl-body p { font-size: 11px; color: rgba(255,255,255,0.85); line-height: 1.7; }
-
-/* ── フェーズブロック ── */
-.phase {
-border-left: 2px solid var(–gold);
-padding: 14px 16px;
-margin-bottom: 14px;
-background: rgba(201,168,76,0.04);
-}
-.phase:last-child { margin-bottom: 0; }
-.phase-header {
-display: flex;
-align-items: baseline;
-gap: 10px;
-margin-bottom: 6px;
-flex-wrap: wrap;
-}
-.phase-time {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 12px;
-color: var(–gold);
-font-weight: 600;
-letter-spacing: 0.05em;
-}
-.phase-name {
-font-size: 11px;
+.hero-eyebrow span { color: var(–gold); }
+.hero-title-jp {
+font-family: ‘Noto Serif JP’, serif;
+font-size: clamp(36px, 9vw, 56px);
+font-weight: 400;
 color: var(–white);
-font-weight: 500;
-}
-.phase-target {
-font-size: 10px;
-color: var(–gold-light);
-letter-spacing: 0.05em;
-opacity: 0.8;
-}
-.phase p { font-size: 8px; color: rgba(255,255,255,0.75); line-height: 1.75; }
-.phase-tag {
-display: inline-block;
-background: rgba(201,168,76,0.15);
-border: 1px solid rgba(201,168,76,0.3);
-color: var(–gold-light);
-font-size: 10.5px;
-padding: 2px 8px;
-border-radius: 2px;
-margin-top: 6px;
-letter-spacing: 0.05em;
-}
-
-/* ── ポスト例 ── */
-.post-section { margin-bottom: 0; }
-.post-section:last-child { margin-bottom: 0; }
-.post-category {
-font-size: 10px;
-letter-spacing: 0.15em;
-color: var(–gold);
-margin-bottom: 8px;
-text-transform: uppercase;
-}
-.post-example {
-background: rgba(255,255,255,0.04);
-border: 1px solid rgba(255,255,255,0.08);
-border-radius: 2px;
-padding: 8px 12px;
-font-size: 11px;
-color: rgba(255,255,255,0.8);
+letter-spacing: .04em;
+line-height: 1.15;
 margin-bottom: 6px;
-line-height: 1.6;
+position: relative;
 }
-.post-example:last-child { margin-bottom: 0; }
-.post-tag { color: var(–gold-light); }
-.post-note {
-font-size: 10px;
-color: rgba(255,255,255,0.4);
-margin-top: 10px;
-font-style: italic;
-}
-
-/* ── DO/DON’T ── */
-.rules {
-display: grid;
-grid-template-columns: 5fr 7fr;
-gap: 14px;
-}
-@media (max-width: 520px) {
-.rules { grid-template-columns: 1fr; }
-}
-.rule-block { }
-.rule-label {
+.hero-title-en {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 13px;
-letter-spacing: 0.15em;
-font-weight: 600;
+font-size: clamp(13px, 3vw, 17px);
+font-style: italic;
+color: var(–gold);
+letter-spacing: .18em;
+margin-bottom: 28px;
+position: relative;
+}
+.hero-rule {
+display: flex;align-items:center;gap:14px;
+justify-content:center;
+position: relative;
+margin-bottom: 0;
+}
+.hero-rule-line {
+width:80px;height:1px;
+background:linear-gradient(to right,transparent,var(–gold-d));
+}
+.hero-rule-line.r{background:linear-gradient(to left,transparent,var(–gold-d));}
+.hero-rule span{color:var(–gold);font-size:14px;}
+
+/* ── LAYOUT ── */
+.container { max-width: 720px; margin: 0 auto; padding: 0 16px 80px; }
+
+/* ── LEAD ── */
+.lead {
+background: var(–card);
+border: 1px solid var(–border);
+border-left: 3px solid var(–gold);
+padding: 22px 24px;
+margin: 28px 0;
+}
+.lead-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 11px;
+letter-spacing: .35em;
+color: var(–gold-d);
+text-transform: uppercase;
 margin-bottom: 10px;
 }
-.rule-label.do { color: #7ec8a0; }
-.rule-label.dont { color: #d9706a; }
-.rule-item {
-display: flex;
-align-items: flex-start;
-gap: 8px;
-font-size: 11px;
-color: rgba(255,255,255,0.78);
+.lead p {
+font-size: 13.5px;
+line-height: 1.9;
+color: var(–text);
 margin-bottom: 8px;
-line-height: 1.65;
 }
-.rule-item .icon {
-flex-shrink: 0;
-margin-top: 2px;
-font-size: 11px;
-}
-.rule-item.do .icon { color: #7ec8a0; }
-.rule-item.dont .icon { color: #d9706a; }
+.lead p:last-child{margin-bottom:0;}
+.lead strong { color: var(–gold-l); font-weight: 500; }
 
-/* ── 合計目標バナー ── */
-.goal-banner {
-background: rgba(201,168,76,0.08);
-border: 1px solid rgba(201,168,76,0.3);
-text-align: center;
-padding: 10px 14px;
+/* ── PRACTICE BADGE ── */
+.practice {
+background: linear-gradient(135deg, rgba(154,144,184,.12), rgba(201,168,76,.08));
+border: 1px solid rgba(154,144,184,.3);
+padding: 12px 18px;
 margin-top: 14px;
-border-radius: 2px;
+display: flex;align-items:flex-start;gap:10px;
+font-size: 13px;
+color: var(–lav);
+line-height: 1.8;
 }
-.goal-banner .num {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 17px;
-color: var(–gold-light);
-font-weight: 500;
-letter-spacing: 0.05em;
-}
-.goal-banner .label {
-font-size: 8px;
-color: rgba(255,255,255,0.5);
-letter-spacing: 0.08em;
-margin-top: 3px;
-}
+.practice-star{color:var(–gold);flex-shrink:0;margin-top:2px;}
 
-/* ── セパレーター ── */
-.sep {
+/* ── SECTION ── */
+.section { margin-bottom: 8px; }
+
+.sec-header {
 display: flex;
 align-items: center;
-gap: 12px;
-margin: 8px 0 20px;
+gap: 14px;
+padding: 16px 20px;
+background: var(–card2);
+border-top: 1px solid var(–border);
+cursor: default;
 }
-.sep::before, .sep::after {
-content: ‘’;
-flex: 1;
-height: 1px;
-background: rgba(201,168,76,0.2);
+.sec-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22px;
+color: var(–gold);
+line-height: 1;
+width: 28px;
+flex-shrink: 0;
 }
-.sep-star { color: var(–gold); font-size: 10px; opacity: 0.6; }
+.sec-title {
+font-family: ‘Noto Serif JP’, serif;
+font-size: 16px;
+font-weight: 400;
+color: var(–white);
+letter-spacing: .06em;
+}
+.sec-badge {
+margin-left: auto;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 10px;
+letter-spacing: .25em;
+color: var(–gold-d);
+text-transform: uppercase;
+white-space: nowrap;
+}
 
-/* ── フッター ── */
-.footer {
-text-align: center;
-padding: 24px;
-font-size: 11px;
-color: rgba(255,255,255,0.25);
-letter-spacing: 0.1em;
+.sec-body {
+background: var(–card);
+border: 1px solid var(–border);
+border-top: none;
+padding: 24px 22px;
 }
+
+/* ── MERIT LIST ── */
+.merit-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.merit-list li {
+display:flex;align-items:center;gap:10px;
+font-size:13px;
+color:var(–text);
+padding:8px 14px;
+background:rgba(201,168,76,.04);
+border-left:2px solid rgba(201,168,76,.35);
+}
+.merit-list li span{color:var(–gold);font-size:10px;flex-shrink:0;}
+
+/* ── PREP TABLE ── */
+.prep-subtitle {
+font-family:‘Cormorant Garamond’,serif;
+font-size:12px;
+letter-spacing:.3em;
+color:var(–gold-d);
+text-transform:uppercase;
+margin-bottom:10px;
+margin-top:20px;
+}
+.prep-subtitle:first-child{margin-top:0;}
+
+.yt-table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+.yt-table tr{border-bottom:1px solid rgba(201,168,76,.08);}
+.yt-table tr:last-child{border-bottom:none;}
+.yt-table td{padding:9px 12px;font-size:13px;vertical-align:middle;}
+.yt-table .k{color:var(–text-d);width:130px;}
+.yt-table .v{color:var(–text);font-weight:400;}
+.yt-table .v.warn{color:var(–pink);}
+.yt-table tr:nth-child(odd){background:rgba(201,168,76,.03);}
+
+.prep-rows{display:flex;flex-direction:column;gap:0;}
+.prep-row{
+display:grid;grid-template-columns:110px 1fr;
+border-bottom:1px solid rgba(201,168,76,.08);
+}
+.prep-row:last-child{border-bottom:none;}
+.prep-row-key{
+padding:10px 10px 10px 0;
+font-size:12px;color:var(–text-d);
+border-right:1px solid rgba(201,168,76,.12);
+display:flex;align-items:flex-start;gap:6px;
+}
+.prep-row-key .st{color:var(–gold);font-size:9px;margin-top:3px;}
+.prep-row-val{
+padding:10px 0 10px 14px;
+font-size:13px;color:var(–text);
+line-height:1.65;
+}
+.prep-row-val .note{font-size:11px;color:var(–text-d);display:block;margin-top:1px;}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:0;}
+
+.step{
+display:grid;grid-template-columns:56px 1fr;
+position:relative;
+}
+.step:not(:last-child)::after{
+content:’’;
+position:absolute;
+left:27px;top:54px;bottom:0;
+width:1px;
+background:linear-gradient(to bottom,rgba(201,168,76,.3),transparent);
+}
+.step-left{display:flex;flex-direction:column;align-items:center;padding-top:2px;}
+.step-circle{
+width:44px;height:44px;
+border:1px solid rgba(201,168,76,.4);border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-family:‘Cormorant Garamond’,serif;font-size:18px;
+color:var(–gold-l);
+background:rgba(201,168,76,.06);
+flex-shrink:0;
+}
+.step-right{padding:2px 0 28px 14px;}
+.step-en{
+font-family:‘Cormorant Garamond’,serif;
+font-size:10px;letter-spacing:.22em;
+color:var(–lav);opacity:.7;
+text-transform:uppercase;margin-bottom:3px;
+}
+.step-title{
+font-family:‘Noto Serif JP’,serif;
+font-size:16px;font-weight:400;
+color:var(–gold-l);letter-spacing:.06em;
+margin-bottom:8px;
+}
+.step-body{font-size:13px;line-height:1.9;color:var(–text);}
+.step-body .ac{color:var(–lav);}
+.step-tag{
+margin-top:10px;padding:9px 14px;
+border:1px solid rgba(154,144,184,.25);
+background:rgba(154,144,184,.05);
+font-family:‘Courier New’,monospace;
+font-size:12px;color:var(–lav);line-height:1.9;
+}
+
+/* ── NG LIST ── */
+.ng-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.ng-list li{
+display:flex;align-items:center;gap:12px;
+font-size:13px;line-height:1.6;
+padding:9px 14px;
+border:1px solid rgba(184,120,128,.12);
+background:rgba(184,120,128,.03);
+}
+.ng-x{color:var(–pink);font-size:12px;flex-shrink:0;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:0;}
+.faq-item{border-bottom:1px solid rgba(201,168,76,.1);padding:14px 0;}
+.faq-item:last-child{border-bottom:none;padding-bottom:0;}
+.faq-q{
+display:flex;align-items:flex-start;gap:10px;
+font-size:13.5px;color:var(–gold-l);
+margin-bottom:5px;line-height:1.7;
+}
+.faq-qm{
+font-family:‘Cormorant Garamond’,serif;
+font-size:19px;color:var(–gold);line-height:1.2;flex-shrink:0;
+}
+.faq-a{
+display:flex;align-items:flex-start;gap:10px;
+font-size:13px;color:var(–text);
+line-height:1.85;padding-left:2px;
+}
+.faq-am{
+font-family:‘Cormorant Garamond’,serif;
+font-size:17px;color:var(–lav);line-height:1.3;flex-shrink:0;
+}
+
+/* ── FOOTER ── */
+.footer{
+text-align:center;
+padding:44px 20px 24px;
+border-top:1px solid var(–border);
+margin-top:32px;
+}
+.footer-stars{
+font-size:12px;color:var(–gold);
+letter-spacing:10px;margin-bottom:16px;opacity:.5;
+}
+.footer-main{
+font-family:‘Cormorant Garamond’,serif;
+font-size:clamp(14px,3.5vw,18px);
+font-style:italic;color:var(–gold-l);
+letter-spacing:.08em;margin-bottom:6px;
+}
+.footer-sub{
+font-size:10px;letter-spacing:.3em;
+color:var(–gold-d);text-transform:uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{animation:fadeDown .7s ease both;}
+.hero-title-jp{animation:fadeDown .7s .1s ease both;}
+.hero-title-en{animation:fadeDown .7s .2s ease both;}
+.hero-rule{animation:fadeDown .7s .3s ease both;}
+.lead{animation:fadeUp .6s .2s ease both;}
+.section:nth-child(1){animation:fadeUp .6s .3s ease both;}
+.section:nth-child(2){animation:fadeUp .6s .4s ease both;}
+.section:nth-child(3){animation:fadeUp .6s .5s ease both;}
+.section:nth-child(4){animation:fadeUp .6s .6s ease both;}
+.section:nth-child(5){animation:fadeUp .6s .7s ease both;}
 </style>
 
 </head>
 <body>
 
-<div class="header">
-  <div class="header-label">JAYBIRDS ✦ #JustVoteJay</div>
-  <div class="header-title">Tag Event Playbook</div>
-  <div class="header-inline">
-    <span class="header-tag-inline">#JustVoteJay</span>
-    <span style="color:rgba(201,168,76,0.4); font-family:'Cormorant Garamond',serif; font-size:20px;">✦</span>
-    <span class="header-sub">3/26(Thu.) 18:00〜19:00</span>
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-eyebrow">JAYBIRDS &nbsp;✦&nbsp; <span>SUMIN GUIDE</span></div>
+  <div class="hero-title-jp">スミンパーティー<br>ガイド</div>
+  <div class="hero-title-en">Sumin Party Guide</div>
+  <div class="hero-rule">
+    <div class="hero-rule-line"></div>
+    <span>✦</span>
+    <div class="hero-rule-line r"></div>
   </div>
 </div>
 
 <div class="container">
 
-  <!-- タグイベとは -->
+  <!-- LEAD -->
 
-  <div class="card">
-    <div class="card-title">✦ タグイベとは</div>
-    <p style="font-size:8px; color:rgba(255,255,255,0.8); line-height:1.85;">
-      決められた時間に全員が同じハッシュタグをつけて一斉に投稿することで、Xのトレンドに入ることを狙うイベントです。<br>
-      今回の目的は<strong style="color:var(--gold-light);">ジュアンジェイの認知拡大</strong>。放送前にXでジュアンジェイの名前を広め、一人でも多くの人に放送を見てもらうことを目指します。
-    </p>
+  <div class="lead">
+    <div class="lead-title">まず知っておくべきこと</div>
+    <p>みんなで同じ時間に同じ動画を再生して、推しの再生数を一気に伸ばす応援企画。時間になったら一緒に見るだけでOK。</p>
+    <ul class="merit-list">
+      <li><span>✦</span>再生が集中するほど、アルゴリズムに拾われやすくなる</li>
+      <li><span>✦</span>公開直後の初速が、その後の拡散を左右する</li>
+      <li><span>✦</span>感想がXに一斉に広がり、タグのトレンド入りも狙える</li>
+    </ul>
+    <div class="practice">
+      <span class="practice-star">✦</span>
+      <span>今回は練習回！番組が始まったら動画投稿に合わせて本番も開催予定なので、ぜひ流れを掴んでおいてください🎉</span>
+    </div>
   </div>
 
-  <!-- 時間別の動き方 -->
+  <!-- 01: 事前準備 -->
 
-  <div class="card">
-    <div class="card-title">✦ 時間別の動き方</div>
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">1</span>
+      <span class="sec-title">事前準備</span>
+      <span class="sec-badge">公開前</span>
+    </div>
+    <div class="sec-body">
 
 ```
-<div class="phase">
-  <div class="phase-header">
-    <span class="phase-time">18:00〜18:10</span>
-    <span class="phase-name">初動フェーズ</span>
-    <span class="phase-target">🎯 目標：1人 10〜15ポスト</span>
-  </div>
-  <p>この10分が全て。下書きを一気に放出する。トレンドアルゴリズムは最初の急上昇を検知するので、全員が集中して動くことが最重要。</p>
-  <div><span class="phase-tag">画像・動画・絵文字 禁止</span> <span class="phase-tag">短文テキストのみ</span></div>
-</div>
+  <div class="prep-subtitle">YouTube設定の確認</div>
+  <table class="yt-table">
+    <tr><td class="k">国 / 地域</td><td class="v">日本</td></tr>
+    <tr><td class="k">自動再生</td><td class="v">オフ</td></tr>
+    <tr><td class="k">再生画質</td><td class="v">720p 以上</td></tr>
+    <tr><td class="k">再生スピード</td><td class="v">標準（1.0x）</td></tr>
+    <tr><td class="k">VPN</td><td class="v warn">使用しない</td></tr>
+  </table>
 
-<div class="phase">
-  <div class="phase-header">
-    <span class="phase-time">18:10〜18:40</span>
-    <span class="phase-name">布教フェーズ</span>
-    <span class="phase-target">🎯 目標：1人 15〜20ポスト</span>
-  </div>
-  <p>画像・動画を解禁。「初めてジュアンジェイを知る人に届ける」意識で投稿する。トレンド入りしていれば界隈外の人の目に触れているので、内輪ネタは避ける。</p>
-  <div><span class="phase-tag">画像・動画 OK</span> <span class="phase-tag">布教ポスト中心に</span></div>
-</div>
-
-<div class="phase">
-  <div class="phase-header">
-    <span class="phase-time">18:40〜19:00</span>
-    <span class="phase-name">締めフェーズ</span>
-    <span class="phase-target">🎯 目標：1人 5〜10ポスト</span>
-  </div>
-  <p>失速しやすい時間帯。最後まで離脱しないこと。</p>
-</div>
-
-<div class="goal-banner">
-  <div class="num">1人 30〜45ポスト　全体 1,500〜2,250ポスト</div>
-  <div class="label">この数字を1時間で積み上げることでトレンド入りの可能性が高まります</div>
-</div>
-```
-
-  </div>
-
-  <!-- ポスト例 -->
-
-  <div class="card">
-    <div class="card-title">✦ ポスト例</div>
-    <p style="font-size:11px; color:rgba(255,255,255,0.45); margin-bottom:16px; line-height:1.7;">
-      同じ文章の大量連投はスパム判定のリスクがあるため、言葉を変えて使用してください。
-    </p>
-
-```
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:12px 20px;">
-
-  <div class="post-section">
-    <div class="post-category">① 好きになったきっかけ</div>
-    <div class="post-example">ジュアンジェイを初めて見た瞬間から目が離せなかった <span class="post-tag">#JustVoteJay</span></div>
-    <div class="post-example">あのパフォーマンスを見て秒で落ちた <span class="post-tag">#JustVoteJay</span></div>
-  </div>
-
-  <div class="post-section">
-    <div class="post-category">② 具体的な好きなところ</div>
-    <div class="post-example">ジュアンジェイのダンスの細部へのこだわりが好きすぎる <span class="post-tag">#JustVoteJay</span></div>
-    <div class="post-example">歌声が優しいのに芯があってずっと聴いていられる <span class="post-tag">#JustVoteJay</span></div>
-  </div>
-
-  <div class="post-section">
-    <div class="post-category">③ 感情・気持ちを言葉にする</div>
-    <div class="post-example">ジュアンジェイのことを考えると自然と元気になる <span class="post-tag">#JustVoteJay</span></div>
-    <div class="post-example">応援しているとこちらまで前向きになれる <span class="post-tag">#JustVoteJay</span></div>
-  </div>
-
-  <div class="post-section">
-    <div class="post-category">④ 放送への期待・初見への誘導</div>
-    <div class="post-example">今夜のProduce 101 Japan Shinsekai、ジュアンジェイというトレイニーがいるので見てほしい <span class="post-tag">#JustVoteJay</span></div>
-    <div class="post-example">今夜放送あります、ジュアンジェイをぜひ知ってほしい <span class="post-tag">#JustVoteJay</span></div>
-  </div>
-
-  <div class="post-section">
-    <div class="post-category">⑤ 一言・短文（初動フェーズ向け）</div>
-    <div class="post-example">ジュアンジェイの笑顔が好き <span class="post-tag">#JustVoteJay</span></div>
-    <div class="post-example">ジュアンジェイのパフォーマンスが楽しみすぎる <span class="post-tag">#JustVoteJay</span></div>
-    <div class="post-example">ジュアンジェイを推しています <span class="post-tag">#JustVoteJay</span></div>
-  </div>
-
-  <div class="post-section">
-    <div class="post-category">⑥ English</div>
-    <div class="post-example">I can't stop watching Chuang Jay, he's everything <span class="post-tag">#JustVoteJay</span></div>
-    <div class="post-example">Chuang Jay's performance tonight, don't miss it <span class="post-tag">#JustVoteJay</span></div>
-  </div>
-
-</div>
-```
-
-  </div>
-
-  <!-- 注意事項 -->
-
-  <div class="card">
-    <div class="card-title">✦ 参加にあたっての注意事項</div>
-    <div class="rules">
-      <div class="rule-block">
-        <div class="rule-label do">✓ &nbsp;やること</div>
-        <div class="rule-item do"><span class="icon">✓</span><span>事前に下書きを最低10〜15個用意しておく</span></div>
-        <div class="rule-item do"><span class="icon">✓</span><span>18:00になったら即投稿する</span></div>
-        <div class="rule-item do"><span class="icon">✓</span><span>1時間できるだけ離脱しない</span></div>
-        <div class="rule-item do"><span class="icon">✓</span><span>自分の言葉に変えて多様な文章で投稿する</span></div>
+  <div class="prep-subtitle">やっておくこと</div>
+  <div class="prep-rows">
+    <div class="prep-row">
+      <div class="prep-row-key"><span class="st">✦</span>ログイン</div>
+      <div class="prep-row-val">YouTubeにログインしておく</div>
+    </div>
+    <div class="prep-row">
+      <div class="prep-row-key"><span class="st">✦</span>通知</div>
+      <div class="prep-row-val">日プ公式チャンネルの通知をONにする</div>
+    </div>
+    <div class="prep-row">
+      <div class="prep-row-key"><span class="st">✦</span>タグ</div>
+      <div class="prep-row-val">
+        タグを事前にコピーしておく
+        <span class="note">当日すぐXに投稿できるよう準備を</span>
       </div>
-      <div class="rule-block">
-        <div class="rule-label dont">✗ &nbsp;やってはいけないこと</div>
-        <div class="rule-item dont"><span class="icon">✗</span><span><strong>18:00より前にタグを使う</strong>（初動の濃度が落ちる／最重要）</span></div>
-        <div class="rule-item dont"><span class="icon">✗</span><span>同じ文章をそのままコピペして連投する（スパム判定リスク）</span></div>
-        <div class="rule-item dont"><span class="icon">✗</span><span>タグを2個以上つける（1個に絞る）</span></div>
-        <div class="rule-item dont"><span class="icon">✗</span><span>句読点・絵文字を入れる（初動フェーズ中は特に）</span></div>
-        <div class="rule-item dont"><span class="icon">✗</span><span>画像・動画を18:10より前に使う</span></div>
-        <div class="rule-item dont"><span class="icon">✗</span><span>相互フォロワー以外への引用ポスト（トレンドに反映されない）</span></div>
-        <div class="rule-item dont"><span class="icon">✗</span><span>複数アカウントで参加する（Xガイドライン違反）</span></div>
+    </div>
+    <div class="prep-row">
+      <div class="prep-row-key"><span class="st">✦</span>URL</div>
+      <div class="prep-row-val">
+        動画URLをブックマーク or ピン留め
+        <span class="note">告知されたら即保存しておくとスムーズ</span>
       </div>
     </div>
   </div>
 
-  <!-- フッター -->
+</div>
+```
 
-  <div style="text-align:center; padding: 8px 0 0;">
-    <div style="font-family:'Cormorant Garamond',serif; font-size:12px; color:rgba(201,168,76,0.5); letter-spacing:0.2em;">JAYBIRDS ✦ #JustVoteJay</div>
+  </div>
+
+  <!-- 02: 当日の流れ -->
+
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">2</span>
+      <span class="sec-title">当日の流れ</span>
+      <span class="sec-badge">開催当日</span>
+    </div>
+    <div class="sec-body">
+      <div class="steps">
+
+```
+    <div class="step">
+      <div class="step-left"><div class="step-circle">1</div></div>
+      <div class="step-right">
+        <div class="step-en">Time to watch</div>
+        <div class="step-title">時間になったら</div>
+        <div class="step-body">通知またはURLから動画を開き、<span class="ac">そのまま離脱せず再生</span>。冒頭30秒が特に重要。</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left"><div class="step-circle">2</div></div>
+      <div class="step-right">
+        <div class="step-en">While watching</div>
+        <div class="step-title">視聴中</div>
+        <div class="step-body"><span class="ac">最後までフル視聴</span> → 高評価 → コメント（絵文字だけより<span class="ac">ひとこと文章</span>が◎）</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-left"><div class="step-circle">3</div></div>
+      <div class="step-right">
+        <div class="step-en">After watching</div>
+        <div class="step-title">見終わったら</div>
+        <div class="step-body">タグをつけてXに感想を投稿！他のジェイバーズの投稿にもいいね・RTして盛り上げよう。</div>
+        <div class="step-tag">
+          #ジュアンジェイ_スミンパーティ<br>
+          #ジュアンジェイ &nbsp;/&nbsp; #PRODUCE101JAPAN新世界
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- 03: NGリスト -->
+
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">3</span>
+      <span class="sec-title">NGリスト</span>
+    </div>
+    <div class="sec-body">
+      <ul class="ng-list">
+        <li><span class="ng-x">✕</span>ミュートのまま放置</li>
+        <li><span class="ng-x">✕</span>バックグラウンド再生・分割画面再生</li>
+        <li><span class="ng-x">✕</span>同じアカウントで連続ループ再生</li>
+        <li><span class="ng-x">✕</span>VPN使用</li>
+        <li><span class="ng-x">✕</span>絵文字だけのコメント連投</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 04: FAQ -->
+
+  <div class="section">
+    <div class="sec-header">
+      <span class="sec-num">4</span>
+      <span class="sec-title">よくある質問</span>
+    </div>
+    <div class="sec-body">
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-qm">Q</span>海外からでも参加できる？</div>
+          <div class="faq-a"><span class="faq-am">A</span>できます。VPNなしで地域設定を「日本」にして参加してください。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-qm">Q</span>動画URLはどこで確認できる？</div>
+          <div class="faq-a"><span class="faq-am">A</span>当日、公式タグおよびJAYBIRDSアカウントにて告知します。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-qm">Q</span>広告はスキップしてOK？</div>
+          <div class="faq-a"><span class="faq-am">A</span>スキップしても再生数への影響はありません。広告ブロッカーはNGです。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+    <div class="footer-stars">✦ ✦ ✦ ✦ ✦</div>
+    <div class="footer-main">Let's fly together, JAYBIRDS ✦</div>
+    <div class="footer-sub">Chuang Jay Fan Support — JAYBIRDS</div>
   </div>
 
 </div>
-
-<div class="footer">for JAYBIRDS — Chuang Jay Fan Support</div>
-
 </body>
 </html>
